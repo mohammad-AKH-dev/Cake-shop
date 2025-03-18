@@ -9,6 +9,9 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    container: {
+     center: true
+    },
     extend: {
       colors: {
         "primary": '#c14679',
@@ -23,6 +26,9 @@ module.exports = {
       backgroundColor: {
         'hover': '#8c2f55',
         'badge': '#232322'
+      },
+      backgroundImage: {
+        'landing': 'url("/images/main-bg.jpg")'
       }
     },
   },
