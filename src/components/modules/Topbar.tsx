@@ -20,14 +20,14 @@ function Topbar() {
         <div
           className="get-in-touch__btn py-4 px-10 
        before:bg-transparent relative before:absolute
-        before:w-full before:h-full before:scale-0 before:inset-0
-        hover:before:scale-100 before:bg-primary before:transition-all hover:text-white hover:before:-z-50 
+        before:w-full before:h-full before:inset-0 
+        hover:before:scale-100 hover:before:bg-hover before:scale-0 before:transition-all hover:text-white hover:before:-z-50 
         before:delay-100
         cursor-pointer
         rounded-md border-2 border-primary flex items-center gap-x-2"
         >
           <MdEmail className="text-[1.3rem] z-50" />
-          <span className="z-50">GET IN TOUCH</span>
+          <span className="z-50 font-bold">GET IN TOUCH</span>
         </div>
       </div>
     </div>

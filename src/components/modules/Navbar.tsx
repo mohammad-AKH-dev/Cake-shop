@@ -25,7 +25,7 @@ function Navbar() {
       <ul className="navbar-list text-[14px] flex items-center gap-x-12">
         {menus.map((menu) => (
           <li
-            className="navbar-item relative before:transition-all
+            className="navbar-item relative before:transition-all font-bold
          hover:before:w-full before:-top-[28px]  before:absolute before:w-0 before:h-[8px] before:bg-primary"
           >
             <Link className="navbar-link" href={menu.href}>
