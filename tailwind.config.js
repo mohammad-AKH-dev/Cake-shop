@@ -8,6 +8,7 @@ module.exports = {
     // Or if using `src` directory:
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  important: true,
   theme: {
     container: {
      center: true,
@@ -48,7 +49,8 @@ module.exports = {
       },
       boxShadow: {
         'box': '3px 9px 18px 0 rgba(0, 0, 0, 0.18)',
-        'offer-box': '0 5px 16px 0 rgba(0, 0, 0, 0.15)'
+        'offer-box': '0 5px 16px 0 rgba(0, 0, 0, 0.15)',
+        'product-box': '0 1px 18px 0 rgba(0, 0, 0, 0.09)'
       },
       backgroundColor: {
         "primary": '#c14679',
@@ -58,7 +60,8 @@ module.exports = {
       },
       backgroundImage: {
         'landing': 'url("/images/main-bg.jpg")',
-        'fresh-cakes': 'url("/images/products-bg.jpg")'
+        'fresh-cakes': 'url("/images/products-bg.jpg")',
+        'new-products': 'url("/images/newProducts.jpg")'
       }
     },
   },

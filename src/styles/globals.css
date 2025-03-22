@@ -33,3 +33,12 @@ body {
   margin-top: 2rem;
   overflow-x: hidden;
 }
+
+.swiper-pagination-bullet-active {
+  background-color: #c14679 !important;
+}
+
+.swiper-pagination-bullet , .swiper-pagination-bullet-active{
+  width: 10px !important;
+  height: 10px !important;
+}
