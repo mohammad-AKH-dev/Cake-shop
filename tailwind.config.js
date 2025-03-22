@@ -61,7 +61,8 @@ module.exports = {
       backgroundImage: {
         'landing': 'url("/images/main-bg.jpg")',
         'fresh-cakes': 'url("/images/products-bg.jpg")',
-        'new-products': 'url("/images/newProducts.jpg")'
+        'new-products': 'url("/images/newProducts.jpg")',
+        'summer-sale': 'url("/images/parallax-bg.jpg")'
       }
     },
   },
