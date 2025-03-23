@@ -1,3 +1,4 @@
+import Aboutus from "@/components/templates/index/Aboutus";
 import Branding from "@/components/templates/index/Branding";
 import FreshCakes from "@/components/templates/index/FreshCakes";
 import Landing from "@/components/templates/index/Landing";
@@ -15,6 +16,7 @@ export default function Home() {
        <NewProducts/>
        <Branding/>
        <SummerSale/>
+       <Aboutus/>
     </div>
   );
 }
