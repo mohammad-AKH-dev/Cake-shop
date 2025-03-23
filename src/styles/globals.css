@@ -42,3 +42,9 @@ body {
   width: 10px !important;
   height: 10px !important;
 }
+
+.swiper-wrapper {
+  align-items: center !important;
+  justify-content: center !important;
+  row-gap: 3rem;
+}

@@ -64,7 +64,8 @@ module.exports = {
         'new-products': 'url("/images/newProducts.jpg")',
         'summer-sale': 'url("/images/parallax-bg.jpg")',
         'unique-cakes': 'url("/images/bg-cta-1.jpg")',
-        'news': 'url("/images/cakes/slice.jpg")'
+        'news': 'url("/images/cakes/slice.jpg")',
+        'clients': 'url("/images/clients-bg.jpg")'
       }
     },
   },

@@ -1,5 +1,6 @@
 import Aboutus from "@/components/templates/index/Aboutus";
 import Branding from "@/components/templates/index/Branding";
+import Clients from "@/components/templates/index/Clients";
 import FreshCakes from "@/components/templates/index/FreshCakes";
 import Landing from "@/components/templates/index/Landing";
 import LatestNews from "@/components/templates/index/LatestNews";
@@ -25,6 +26,7 @@ export default function Home() {
        <UniqueCakes/>
        <Testimonials/>
        <LatestNews/>
+       <Clients/>
     </div>
   );
 }
