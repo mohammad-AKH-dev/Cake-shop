@@ -3,9 +3,9 @@ import React from "react";
 
 function SummerSale() {
   return (
-    <section className="summber-sale__section bg-summer-sale h-[600px] mt-36 pt-36 bg-cover bg-center relative -z-30
-     before:absolute before:inset-0 before:-z-20 xl:before:hidden before:bg-[#ffffffb3]">
-      <div className="container flex items-center flex-col justify-center md:block">
+    <section className="summber-sale__section bg-summer-sale h-[600px] mt-36 pt-36 bg-cover bg-center relative
+     before:absolute before:inset-0 before:z-20 xl:before:hidden before:bg-[#ffffffb3]">
+      <div className="container flex items-center flex-col relative z-30 justify-center md:block">
         <h2 className="text-title uppercase tracking-wider text-[26px] md:text-[55px] font-bold">
           Summer sale
         </h2>
@@ -21,7 +21,7 @@ function SummerSale() {
           Purchase our tasty cakes and sweets for your next event or family
           dinner at our online shop and save more money than anywhere.
         </p>
-        <div className="-mb-8 md:mb-0">
+        <div className="-mb-8 md:mb-0 relative z-50">
 
         <Button title="shop now" href="/shop"/>
         </div>
