@@ -6,6 +6,7 @@ import NewProducts from "@/components/templates/index/NewProducts";
 import Offers from "@/components/templates/index/Offers";
 import OurTeam from "@/components/templates/index/OurTeam";
 import SummerSale from "@/components/templates/index/SummerSale";
+import Testimonials from "@/components/templates/index/Testimonials";
 import UniqueCakes from "@/components/templates/index/UniqueCakes";
 
 
@@ -21,6 +22,7 @@ export default function Home() {
        <Aboutus/>
        <OurTeam/>
        <UniqueCakes/>
+       <Testimonials/>
     </div>
   );
 }
