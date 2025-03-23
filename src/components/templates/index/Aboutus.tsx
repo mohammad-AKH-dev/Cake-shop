@@ -76,7 +76,7 @@ function Aboutus() {
               <Link
                 href={"/"}
                 className="text-text border-b-2 border-b-text uppercase inline-block mt-12 bg-[#fff] pb-1  font-bold
-            tracking-widest hover:tracking-[.3rem] hover:text-primary transition-all mx-auto lg:ml-[28.5%]"
+            tracking-widest hover:tracking-[.3rem] hover:text-primary transition-all mx-auto lg:ml-[28.5%] xl:ml-[40.5%]"
               >
                 read more
               </Link>

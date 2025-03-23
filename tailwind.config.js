@@ -62,7 +62,8 @@ module.exports = {
         'landing': 'url("/images/main-bg.jpg")',
         'fresh-cakes': 'url("/images/products-bg.jpg")',
         'new-products': 'url("/images/newProducts.jpg")',
-        'summer-sale': 'url("/images/parallax-bg.jpg")'
+        'summer-sale': 'url("/images/parallax-bg.jpg")',
+        'unique-cakes': 'url("/images/bg-cta-1.jpg")'
       }
     },
   },

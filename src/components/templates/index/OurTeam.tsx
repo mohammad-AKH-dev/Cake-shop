@@ -32,7 +32,7 @@ function OurTeam() {
   ]);
 
   return (
-    <section className="our-team__section mt-16 bg-new-products p-16">
+    <section className="our-team__section mt-16 bg-new-products p-16 pb-24">
       <SectionTitle title="our team" />
 
       <div className="container team-members grid grid-cols-1 sm:grid-cols-2 gap-y-8 lg:gap-y-0  lg:grid-cols-3 gap-x-12 xl:gap-x-4 mt-12 place-items-center">

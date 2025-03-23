@@ -6,6 +6,7 @@ import NewProducts from "@/components/templates/index/NewProducts";
 import Offers from "@/components/templates/index/Offers";
 import OurTeam from "@/components/templates/index/OurTeam";
 import SummerSale from "@/components/templates/index/SummerSale";
+import UniqueCakes from "@/components/templates/index/UniqueCakes";
 
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
        <SummerSale/>
        <Aboutus/>
        <OurTeam/>
+       <UniqueCakes/>
     </div>
   );
 }
