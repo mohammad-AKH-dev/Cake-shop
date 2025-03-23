@@ -2,6 +2,7 @@ import Aboutus from "@/components/templates/index/Aboutus";
 import Branding from "@/components/templates/index/Branding";
 import FreshCakes from "@/components/templates/index/FreshCakes";
 import Landing from "@/components/templates/index/Landing";
+import LatestNews from "@/components/templates/index/LatestNews";
 import NewProducts from "@/components/templates/index/NewProducts";
 import Offers from "@/components/templates/index/Offers";
 import OurTeam from "@/components/templates/index/OurTeam";
@@ -23,6 +24,7 @@ export default function Home() {
        <OurTeam/>
        <UniqueCakes/>
        <Testimonials/>
+       <LatestNews/>
     </div>
   );
 }
