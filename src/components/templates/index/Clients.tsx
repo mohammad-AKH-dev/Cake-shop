@@ -17,10 +17,10 @@ function Clients() {
           pagination={{
             dynamicBullets: true,
           }}
-          modules={[Pagination]}
+          modules={[Pagination,Autoplay]}
           loop
           spaceBetween={50}
-          centeredSlides
+          autoplay
           slidesPerView={1}
           breakpoints={{
             320: {

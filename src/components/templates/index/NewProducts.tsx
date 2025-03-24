@@ -16,21 +16,25 @@ function NewProducts() {
     <section className="new-products__section mt-36 bg-new-products min-h-[400px] bg-auto bg-repeat bg-center bg-[#f7f7f7] pt-24">
       <SectionTitle title="new products" />
 
-      <div className="products-slider container mt-8 pb-16">
+      <div className="products-slider mt-8 pb-16 container">
 
-      <Swiper pagination={true} modules={[Pagination,Autoplay]} spaceBetween={30} 
-      loop className="mySwiper pb-24" autoplay slidesPerView={1} grabCursor
+      <Swiper pagination={true} modules={[Pagination,Autoplay]} spaceBetween={30}
+       className="mySwiper pb-24" autoplay slidesPerView={4} loop grabCursor={true}
       breakpoints={
         {
+          320: {
+            slidesPerView: 1
+          },
           576: {
             slidesPerView: 2
+            
           },
           768: {
             slidesPerView: 3
           },
           993: {
             slidesPerView: 4
-          }
+          },
         }
       } >
         <SwiperSlide>

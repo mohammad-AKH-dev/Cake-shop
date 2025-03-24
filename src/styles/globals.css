@@ -29,7 +29,6 @@ body {
   color: #151515;
   font-family: Poppins ,Arial, Helvetica, sans-serif;
   font-size: 13px;
-  margin-bottom: 20rem;
   margin-top: 2rem;
   overflow-x: hidden;
 }
@@ -45,6 +44,4 @@ body {
 
 .swiper-wrapper {
   align-items: center !important;
-  justify-content: center !important;
-  row-gap: 3rem;
 }
