@@ -50,7 +50,8 @@ module.exports = {
       boxShadow: {
         'box': '3px 9px 18px 0 rgba(0, 0, 0, 0.18)',
         'offer-box': '0 5px 16px 0 rgba(0, 0, 0, 0.15)',
-        'product-box': '0 1px 18px 0 rgba(0, 0, 0, 0.09)'
+        'product-box': '0 1px 18px 0 rgba(0, 0, 0, 0.09)',
+        
       },
       backgroundColor: {
         "primary": '#c14679',
@@ -65,7 +66,8 @@ module.exports = {
         'summer-sale': 'url("/images/parallax-bg.jpg")',
         'unique-cakes': 'url("/images/bg-cta-1.jpg")',
         'news': 'url("/images/cakes/slice.jpg")',
-        'clients': 'url("/images/clients-bg.jpg")'
+        'clients': 'url("/images/clients-bg.jpg")',
+        'page-header': 'url("/images/breadcrumbs-bg.jpg")'
       }
     },
   },

@@ -45,3 +45,7 @@ body {
 .swiper-wrapper {
   align-items: center !important;
 }
+
+.page-header__title  {
+  text-shadow: 3px 9px 16px rgba(0, 0, 0, 0.18);
+}
