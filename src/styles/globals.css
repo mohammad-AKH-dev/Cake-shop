@@ -49,3 +49,7 @@ body {
 .page-header__title  {
   text-shadow: 3px 9px 16px rgba(0, 0, 0, 0.18);
 }
+
+.range-slider__range ,.range-slider__thumb {
+  background: #c14679 !important;
+}

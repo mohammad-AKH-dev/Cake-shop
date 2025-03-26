@@ -8,7 +8,7 @@ function Landing() {
       className="landing-section bg-landing w-full bg-cover bg-no-repeat bg-center 
     mt-8 min-h-[500px]"
     >
-      <div className="landing-left__section pb-[15rem]  w-full text-center sm:text-left sm:max-w-[50%] px-8 pt-8 ">
+      <div className="landing-left__section container pb-[15rem]  w-full text-center sm:text-left  px-8 pt-8 ">
         <h1 className="left-section__title font-title text-[90px] sm:text-[75px] lg:text-[100px] text-primary">
           Delicious
         </h1>

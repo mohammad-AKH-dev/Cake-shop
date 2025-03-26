@@ -40,7 +40,8 @@ module.exports = {
       },
       borderColor: {
         'primary': '#c14679',
-        'box': '#f3f7f8'
+        'box': '#f3f7f8',
+        'title': '#e1e1e1'
       },
       fontFamily: {
         'primary': 'Poppins',
