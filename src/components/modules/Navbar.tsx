@@ -16,8 +16,8 @@ function Navbar() {
   const [menus, setMenus] = useState<menu[] | []>([
     { id: 1, title: "HOME", href: "/" },
     { id: 2, title: "GALLERY", href: "/gallery" },
-    { id: 3, title: "SHOP", href: "/shop" },
-    { id: 4, title: "BLOG", href: "/blog" },
+    { id: 3, title: "SHOP", href: "/shop/1" },
+    { id: 4, title: "BLOG", href: "/blogs/1" },
     { id: 5, title: "PAGES", href: "/pages" },
     { id: 6, title: "CONTACT US", href: "/contact" },
   ]);
