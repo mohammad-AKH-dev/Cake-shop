@@ -13,7 +13,7 @@ function PageHeader(props: PageHeaderPropsType) {
 
     <>
       <div
-        className="page-header bg-page-header flex bg-cover mt-4
+        className="page-header bg-page-header flex bg-cover lg:mt-4
     bg-center items-center justify-center h-[381px]"
       >
         <h3
