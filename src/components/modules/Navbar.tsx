@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
 import { FaShoppingCart } from "react-icons/fa";
 import { useRouter } from "next/router";
@@ -18,6 +18,7 @@ type pathsType = {
 };
 function Navbar() {
   const router = useRouter();
+  const [scrolled,setScrolled] = useState<number>(0)
   const [menus, setMenus] = useState<menu[] | []>([
     { id: 1, title: "HOME", href: "/" },
     { id: 2, title: "GALLERY", href: "/gallery" },
@@ -37,8 +38,9 @@ function Navbar() {
     { id: 6, title: "CONTACT US", href: "/contact" },
   ]);
 
+
   return (
-    <nav className="Navbar container mt-6 hidden lg:flex items-center justify-between">
+    <nav className="Navbar p-4 py-6 px-6 z-[9999] sticky top-0 left-0 right-0 bg-white mt-6 hidden lg:flex items-center justify-between">
       <ul className="navbar-list text-[14px] flex items-center gap-x-10">
         {menus.map((menu) =>
           !menu.paths ? (
