@@ -17,7 +17,6 @@ function Contact() {
     formState: { errors },
   } = useForm<IFormInput>();
   const submitHandler = (data: IFormInput) => {};
-  console.log(errors);
 
   return (
     <div className="contact-content">

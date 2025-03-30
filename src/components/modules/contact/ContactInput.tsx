@@ -11,13 +11,13 @@ type ContactInputPropsType = {
 function ContactInput(props: ContactInputPropsType) {
   const { placeholder, register, type, error } = props;
   return (
-    <div className="input-wrapper h-fit pl-0 p-4 border-b relative border-b-[#e1e1e1]">
+    <div className="input-wrapper h-fit pl-0 relative ">
       <input
         type={type}
         {...register}
         placeholder={placeholder}
-        className="capitalize w-full autofill:bg-transparent pl-0 p-2 tracking-widest focus:placeholder:-translate-y-4 placeholder:transition-all
-          focus:placeholder:text-[10px] outline-none border-none text-[16px] placeholder:text-[#151515]"
+        className="capitalize w-full border-b pb-4 border-b-[#e1e1e1] autofill:bg-transparent pl-0 p-2 tracking-widest focus:placeholder:-translate-y-4 placeholder:transition-all
+          focus:placeholder:text-[10px] outline-none  text-[16px] placeholder:text-[#151515]"
       />
       {error && (
         <span

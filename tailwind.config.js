@@ -94,7 +94,8 @@ module.exports = {
   			'unique-cakes': 'url("/images/bg-cta-1.jpg")',
   			news: 'url("/images/cakes/slice.jpg")',
   			clients: 'url("/images/clients-bg.jpg")',
-  			'page-header': 'url("/images/breadcrumbs-bg.jpg")'
+  			'page-header': 'url("/images/breadcrumbs-bg.jpg")',
+			'offers-bg': 'url("/images/offers-bg.jpg")'
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
