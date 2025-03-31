@@ -35,7 +35,7 @@ function TeamMemberBox(props: teamMemberBoxPropsType) {
       <div className="member-infos text-center mt-4 group-hover:translate-y-5 transition-all">
         <h3 className="member-infos__title uppercase text-title tracking-[.2rem] transition-all
          cursor-pointer hover:text-primary font-bold text-[24px]">{name}</h3>
-        <p className="member-infos__desc text-[15px] text-text mt-4 max-w-[320px]">
+        <p className="member-infos__desc text-[15px] text-text mx-auto mt-4 max-w-[320px]">
           {desc}
         </p>
         <div className="member-socials flex items-center mt-8 justify-center gap-x-4 text-[20px]">
