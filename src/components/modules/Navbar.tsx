@@ -37,6 +37,7 @@ function Navbar() {
     },
     { id: 6, title: "CONTACT US", href: "/contact" },
   ]);
+  console.log(router)
 
 
   return (
@@ -46,8 +47,8 @@ function Navbar() {
           !menu.paths ? (
             <li
               className={`navbar-item relative before:transition-all font-bold
-         hover:before:w-full before:-top-[28px] ${
-           router.pathname === menu.href && "before:w-full"
+         hover:before:w-full before:-top-[28px] ${router.asPath === menu.href && 'before:w-full'} ${
+           router.pathname === menu.href  && "before:w-full"
          }  
          before:absolute before:w-0 before:h-[8px] before:bg-primary`}
             >

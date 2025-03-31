@@ -127,3 +127,12 @@ button > svg {
   width: 30px !important;
   height: 30px !important;
 }
+
+button > .lucide-chevron-down {
+  transform: rotate(-90deg);
+  stroke-width: 3px !important;
+}
+
+button > .lucide-chevron-down:hover {
+   transform: rotate(0deg) !important;
+}

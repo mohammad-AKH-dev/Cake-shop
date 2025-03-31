@@ -16,7 +16,7 @@ function PageHeader(props: PageHeaderPropsType) {
     bg-center items-center justify-center h-[381px]"
       >
         <h3
-          className="page-header__title text-[55px] tracking-widest uppercase text-white
+          className="page-header__title text-[30px] text-center sm:text-[55px] tracking-widest uppercase text-white
       font-bold"
         >
           {title}

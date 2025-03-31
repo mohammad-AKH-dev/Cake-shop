@@ -5,13 +5,16 @@ import { IoFlower } from "react-icons/io5";
 import { FaTruck } from "react-icons/fa";
 import { MdOutlinePayment } from "react-icons/md";
 import Ticket from "./Ticket";
+import OfferBox from "@/components/modules/offers/OfferBox";
+import Accordeons from "./Accordeons";
+
 
 function Offers() {
   const [services, setServices] = useState();
 
   return (
-    <div className="offers-wrapper">
-      <div className="services-wrapper container">
+    <div className="offers-wrapper ">
+      <div className="services-wrapper pl-12  container">
         <div
           className="offers-services__wrapper grid place-items-center gap-x-6 
       grid-cols-1 text-center sm:text-left sm:grid-cols-2 gap-y-12 sm:gap-y-6 lg:gap-y-0 lg:grid-cols-3 xl:grid-cols-4"
@@ -47,6 +50,13 @@ function Offers() {
         </div>
       </div>
       <Ticket />
+      <div className="offers-boxes__wrapper container mt-28 gap-x-12 grid grid-cols-1
+       sm:grid-cols-2 gap-y-12 lg:gap-y-0 lg:grid-cols-3">
+        <OfferBox/>
+        <OfferBox/>
+        <OfferBox/>
+      </div>
+      <Accordeons/>
     </div>
   );
 }

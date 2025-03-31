@@ -27,11 +27,11 @@ module.exports = {
   	},
   	extend: {
   		colors: {
-  			'primary': '#c14679',
-  			'title': '#151515',
-  			'text': '#777777',
+  			primary: '#c14679',
+  			title: '#151515',
+  			text: '#777777',
   			tab: '#9b9b9b',
-  			'icon': '#575757',
+  			icon: '#575757',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
@@ -79,10 +79,11 @@ module.exports = {
   			box: '3px 9px 18px 0 rgba(0, 0, 0, 0.18)',
   			'offer-box': '0 5px 16px 0 rgba(0, 0, 0, 0.15)',
   			'product-box': '0 1px 18px 0 rgba(0, 0, 0, 0.09)',
-			'row-box': '0 0 9px 0 rgba(0, 0, 0, 0.08)'
+  			'row-box': '0 0 9px 0 rgba(0, 0, 0, 0.08)',
+  			'service-box': '3px 6px 6px 0 rgba(0, 0, 0, 0.11)'
   		},
   		backgroundColor: {
-  			'primary': '#c14679',
+  			primary: '#c14679',
   			hover: '#8c2f55',
   			badge: '#232322'
   		},
@@ -95,12 +96,34 @@ module.exports = {
   			news: 'url("/images/cakes/slice.jpg")',
   			clients: 'url("/images/clients-bg.jpg")',
   			'page-header': 'url("/images/breadcrumbs-bg.jpg")',
-			'offers-bg': 'url("/images/offers-bg.jpg")'
+  			'offers-bg': 'url("/images/offers-bg.jpg")'
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
+  		},
+  		keyframes: {
+  			'accordion-down': {
+  				from: {
+  					height: '0'
+  				},
+  				to: {
+  					height: 'var(--radix-accordion-content-height)'
+  				}
+  			},
+  			'accordion-up': {
+  				from: {
+  					height: 'var(--radix-accordion-content-height)'
+  				},
+  				to: {
+  					height: '0'
+  				}
+  			}
+  		},
+  		animation: {
+  			'accordion-down': 'accordion-down 0.2s ease-out',
+  			'accordion-up': 'accordion-up 0.2s ease-out'
   		}
   	}
   },
