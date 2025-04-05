@@ -80,7 +80,10 @@ module.exports = {
   			'offer-box': '0 5px 16px 0 rgba(0, 0, 0, 0.15)',
   			'product-box': '0 1px 18px 0 rgba(0, 0, 0, 0.09)',
   			'row-box': '0 0 9px 0 rgba(0, 0, 0, 0.08)',
-  			'service-box': '3px 6px 6px 0 rgba(0, 0, 0, 0.11)'
+  			'service-box': '3px 6px 6px 0 rgba(0, 0, 0, 0.11)',
+			'testimonial-box': '0 0 18px 0 rgba(0, 0, 0, 0.13)',
+			'top-comment': '0 0 16px 0 rgba(0, 0, 0, 0.09)'
+			
   		},
   		backgroundColor: {
   			primary: '#c14679',
