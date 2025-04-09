@@ -8,10 +8,12 @@ import { FaCartShopping } from "react-icons/fa6";
 
 function ProductBox() {
   return (
-    <div className='product-box shadow-product-box flex items-center justify-center flex-col gap-y-4 py-8 transition-all
+    <>
+    
+    <Link href={'/product/cake'} className='product-box shadow-product-box flex items-center justify-center flex-col gap-y-4 py-8 transition-all
      delay-100 hover:translate-y-7 group  '>
        <Image width={157} height={127} src={'/images/cakes/chocklate truff.png'} alt='product-img'/>
-       <Link href={'/product/1'} className='product-title text-[18px] font-bold hover:text-primary transition-all'>Chocolate Truffles</Link>
+       <h4 className='product-title text-[18px] font-bold hover:text-primary transition-all'>Chocolate Truffles</h4>
        <div className='product-price&discount-wrapper flex items-center gap-x-4'>
          <span className='product-discount text-[rgba(21,21,21,0.5)] line-through text-[15px]'>
            $30.00
@@ -35,7 +37,8 @@ function ProductBox() {
              <FaCartShopping className='text-white transition-all text-[20px] group-hover:text-white'/>
           </div>
        </div>
-    </div>
+    </Link>
+    </>
   )
 }
 

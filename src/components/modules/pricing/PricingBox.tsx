@@ -1,9 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-
-
-function OfferBox() {
+function PricingBox() {
   return (
     <>
       <div className="offfer-box w-[75%] sm:w-full mx-auto relative shadow-service-box rounded-md">
@@ -34,7 +32,9 @@ function OfferBox() {
              relative mt-9 flex items-center justify-center
              hover:bg-primary hover:text-white border-2 border-[#151515] rounded-lg tracking-wider"
           >
-            <span className="z-[999] block w-full text-center">add to cart</span>
+            <span className="z-[999] block w-full text-center">
+              add to cart
+            </span>
           </div>
         </div>
       </div>
@@ -42,4 +42,4 @@ function OfferBox() {
   );
 }
 
-export default OfferBox;
+export default PricingBox;
