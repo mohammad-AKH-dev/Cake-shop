@@ -82,7 +82,8 @@ module.exports = {
   			'row-box': '0 0 9px 0 rgba(0, 0, 0, 0.08)',
   			'service-box': '3px 6px 6px 0 rgba(0, 0, 0, 0.11)',
 			'testimonial-box': '0 0 18px 0 rgba(0, 0, 0, 0.13)',
-			'top-comment': '0 0 16px 0 rgba(0, 0, 0, 0.09)'
+			'top-comment': '0 0 16px 0 rgba(0, 0, 0, 0.09)',
+			'single-product': '0 0 6px 0 rgba(0, 0, 0, 0.21)'
 			
   		},
   		backgroundColor: {

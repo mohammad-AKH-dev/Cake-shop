@@ -24,7 +24,7 @@ function Gallery() {
     {id: 6 , title: 'Champagne Cupcake', price: 13.99 , image: '/images/gallery/gallery-8.jpg', category: 'cupcakes'}
   ])
 
-  const changleCategoryHandler = (newCategory : string) => {
+  const changleCategoryHandler: (newCategory: string) => void = (newCategory) => {
     setMainCategory(newCategory)
   }
 
