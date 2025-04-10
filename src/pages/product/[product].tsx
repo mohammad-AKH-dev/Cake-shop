@@ -104,7 +104,7 @@ function SingleProduct() {
             ))}
           </div>
         </div>
-        <div className="single-product__right-section text-center flex items-center justify-center flex-col md:block">
+        <div className="single-product__right-section text-center md:text-left flex items-center justify-center flex-col md:block">
           <h3 className="single-product__title font-bold text-[36px] md:text-[28px] lg:text-[36px] tracking-wider">
             Chocolate Truffles
           </h3>

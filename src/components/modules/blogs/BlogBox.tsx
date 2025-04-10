@@ -4,7 +4,7 @@ import React from "react";
 
 function BlogBox() {
   return (
-    <div className="blog-box">
+    <div className="blog-box bg-new-products">
       <div className="img-wrapper overflow-hidden">
         <Image
           className="transition-all hover:scale-110 w-full"

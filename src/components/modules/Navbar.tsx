@@ -4,12 +4,14 @@ import { IoSearchOutline } from "react-icons/io5";
 import { FaShoppingCart } from "react-icons/fa";
 import { useRouter } from "next/router";
 import { pathToFileURL } from "url";
+import { usePathname } from "next/navigation";
 
 type menu = {
   id: number;
   title: string;
   href: string;
   paths?: pathsType[];
+  href2?: string
 };
 
 type pathsType = {
@@ -19,26 +21,28 @@ type pathsType = {
 function Navbar() {
   const router = useRouter();
   const [scrolled,setScrolled] = useState<number>(0)
-  const [menus, setMenus] = useState<menu[] | []>([
-    { id: 1, title: "HOME", href: "/" },
-    { id: 2, title: "GALLERY", href: "/gallery" },
-    { id: 3, title: "SHOP", href: "/shop/1" },
-    { id: 4, title: "BLOG", href: "/blogs/1" },
-    {
-      id: 5,
-      title: "PAGES",
-      href: "/pages",
-      paths: [
-        { title: "What We Offer", path: "/offers" },
-        { title: "Our Team", path: "/team" },
-        { title: "Testimonials", path: "/testimonials" },
-        { title: "Pricing List", path: "/pricing" },
-      ],
-    },
-    { id: 6, title: "CONTACT US", href: "/contact" },
-  ]);
-  console.log(router)
+  const [menus, setMenus] = useState<menu[] | []>([]);
 
+  useEffect(() => {
+    setMenus([
+      { id: 1, title: "HOME", href: "/" },
+      { id: 2, title: "GALLERY", href: "/gallery" },
+      { id: 3, title: "SHOP", href: `/shop/1` , href2: `/product/${router?.query?.product}`},
+      { id: 4, title: "BLOG", href: `/blogs/1` , href2: `/blogs/1/blog/${router?.query?.name}`},
+      {
+        id: 5,
+        title: "PAGES",
+        href: "/pages",
+        paths: [
+          { title: "What We Offer", path: "/offers" },
+          { title: "Our Team", path: "/team" },
+          { title: "Testimonials", path: "/testimonials" },
+          { title: "Pricing List", path: "/pricing" },
+        ],
+      },
+      { id: 6, title: "CONTACT US", href: "/contact" },
+    ])
+  },[])
 
   return (
     <nav className="Navbar p-4 py-6 px-6 z-[9999] sticky top-0 left-0 right-0 bg-white mt-6 hidden lg:flex items-center justify-between">
@@ -47,8 +51,9 @@ function Navbar() {
           !menu.paths ? (
             <li
               className={`navbar-item relative before:transition-all font-bold
-         hover:before:w-full before:-top-[28px] ${router.asPath === menu.href && 'before:w-full'} ${
-           router.pathname === menu.href  && "before:w-full"
+         hover:before:w-full before:-top-[28px] ${router?.asPath === menu?.href2 && 'before:w-full'} 
+         ${router?.asPath === menu.href && 'before:w-full'} ${
+           router?.pathname === menu.href  && "before:w-full"
          }  
          before:absolute before:w-0 before:h-[8px] before:bg-primary`}
             >
