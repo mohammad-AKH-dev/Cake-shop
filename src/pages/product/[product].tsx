@@ -52,10 +52,10 @@ function SingleProduct() {
   };
 
   return (
-    <div className="single-product__page">
+    <div className="single-product__page relative z-[999]">
       <PageHeader
         title="single shop"
-        paths={["shop", `${router.query.name}`]}
+        paths={["shop", `${router.query.product}`]}
       />
       <div className="container single-product__content grid gap-x-12 grid-cols-1 gap-y-12  md:grid-cols-2 mt-24">
         <div className="single-product__left-section">

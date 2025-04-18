@@ -4,7 +4,7 @@ import React from 'react'
 
 function index() {
   return (
-    <div className='team-page'>
+    <div className='team-page relative z-[999]'>
       <PageHeader title='our team'/>
       <div className='teams'>
         <Team/>

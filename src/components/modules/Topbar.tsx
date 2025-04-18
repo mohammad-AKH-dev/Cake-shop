@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FaLocationDot } from "react-icons/fa6";
+import data from '../../../data/db.json'
 import { MdEmail } from "react-icons/md";
 import { IoMenuSharp, IoSearchOutline } from "react-icons/io5";
 import { FaShoppingCart } from "react-icons/fa";
@@ -20,9 +21,9 @@ function Topbar() {
   }, []);
 
   return (
-    <div className={`Topbar sticky transition-all lg:static top-0 bg-white z-[999] ${scrollTop >= 40 ? 'pt-6' : 'pt-0'}
+    <div className={`Topbar sticky z-[9999] transition-all lg:static top-0 bg-white  ${scrollTop >= 40 ? 'pt-6' : 'pt-0'}
     right-0 left-0  lg:pt-0 pb-6 px-6 lg:px-0 border-b border-text `}>
-      <div className="topbar-content px-6 flex justify-between items-center">
+      <div className="topbar-content px-6 flex relative z-[9999] justify-between items-center">
         <div className="location hidden lg:flex items-center gap-x-4">
           <FaLocationDot className="text-[2rem]" />
           <Link href="/contact" className="hover:text-primary transition-all">

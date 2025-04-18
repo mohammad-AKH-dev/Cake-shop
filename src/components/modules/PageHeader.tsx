@@ -17,7 +17,7 @@ function PageHeader(props: PageHeaderPropsType) {
   return (
     <>
       <div
-        className="page-header bg-page-header flex bg-cover lg:mt-4
+        className="page-header bg-page-header relative z-[999] flex bg-cover lg:mt-4
     bg-center items-center justify-center h-[381px]"
       >
         <h3

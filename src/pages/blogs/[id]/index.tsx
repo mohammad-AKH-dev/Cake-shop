@@ -5,7 +5,7 @@ import React from "react";
 
 function Blog() {
   return (
-    <div className="blog-page">
+    <div className="blog-page relative z-[999]">
       <PageHeader title="blog" />
       <div className="container">
         <div className="blogs-wrapper grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">

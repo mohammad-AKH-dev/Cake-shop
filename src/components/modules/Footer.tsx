@@ -8,7 +8,7 @@ import { IoLogoGoogleplus } from "react-icons/io";
 
 function Footer() {
   return (
-    <footer className="footer mt-24">
+    <footer className="footer mt-24 z-[999] relative">
       <div className="container grid grid-cols-1 md:grid-cols-2 gap-y-8  xl:grid-cols-3 gap-x-12 ">
         <div className="gallery">
           <div className="section-title uppercase tracking-widest font-bold pb-9 text-[18px] text-title">

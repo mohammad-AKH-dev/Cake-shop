@@ -245,10 +245,10 @@ function Shop() {
           <div className="sorting-wrapper flex items-center gap-x-6 justify-between w-full sm:w-fit">
             <Select>
               <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Sort by newness" className="" />
+                <SelectValue placeholder="Sort by newness" />
               </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
+              <SelectContent className="z-[9999] relative">
+                <SelectGroup className="relative">
                   <SelectItem
                     value="newness"
                     className="data-[state=checked]:bg-primary data-[state=checked]:text-white"

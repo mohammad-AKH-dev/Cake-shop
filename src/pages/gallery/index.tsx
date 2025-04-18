@@ -4,7 +4,7 @@ import React from 'react'
 
 function index() {
   return (
-    <div className='gallery-page pb-24 border-b border-b-[#ebebeb]'>
+    <div className='gallery-page pb-24 border-b border-b-[#ebebeb] relative z-[999]'>
         <PageHeader title='gallery'/>
         <Gallery/>
     </div>

@@ -14,7 +14,7 @@ import UniqueCakes from "@/components/templates/index/UniqueCakes";
 
 export default function Home() {
   return (
-    <div className="main-page">
+    <div className="main-page relative z-[999]">
        <Landing/>
        <FreshCakes/>
        <Offers/>

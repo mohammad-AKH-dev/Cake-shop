@@ -47,7 +47,7 @@ function SingleBlogPage() {
 
   const router = useRouter();
   return (
-    <div className="single-blog__Page">
+    <div className="single-blog__Page relative z-[999]">
       <PageHeader title="blog post" paths={["blog", `${router.query.name}`]} />
       <div className="container single-blog__content mt-24 flex flex-col lg:flex-row gap-x-16 xl:gap-x-4">
         <div className="single-blog__left-section w-full lg:w-[70%] xl:w-[75%]">
