@@ -10,7 +10,7 @@ import { AiFillInstagram } from "react-icons/ai";
 import { FaGooglePlusG } from "react-icons/fa6";
 import { FaTwitter } from "react-icons/fa";
 import { useRouter } from "next/router";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperClass, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
@@ -37,7 +37,7 @@ function SingleProduct() {
     "/images/products/single-product-3.png",
   ]);
   const [activeImage, setActiveImage] = useState(0);
-  const swiperRef = useRef<object>(null);
+  const swiperRef = useRef<SwiperClass>(null);
   const {
     register,
     handleSubmit,
@@ -46,7 +46,9 @@ function SingleProduct() {
   const submitHandler = (data: IFormInput) => {};
 
   const changeImageHandler = () => {
-    setActiveImage(swiperRef?.current?.activeIndex);
+    if (swiperRef.current) {
+      setActiveImage(swiperRef?.current?.activeIndex);
+    }
   };
 
   return (
@@ -120,8 +122,10 @@ function SingleProduct() {
               <FaRegStar />
             </div>
           </div>
-          <p className="single-product__desc text-[16px] md:text-[12px] 
-          lg:text-[14px] leading-7 md:leading-6 mb-8 pb-3 border-b border-b-[#e1e1e1]">
+          <p
+            className="single-product__desc text-[16px] md:text-[12px] 
+          lg:text-[14px] leading-7 md:leading-6 mb-8 pb-3 border-b border-b-[#e1e1e1]"
+          >
             Lorem ipsum dolor sit amet, ei impetus epicurei his, ne falli erant
             consequuntur est. Mei simul aperiam eu, an rebum regione ponderum
             mel. Facer placerat ut duo, id duis solum maiorum vis, vim
@@ -250,7 +254,9 @@ function SingleProduct() {
         </button>
       </form>
       <div className="featured-products__wrapper mt-24">
-        <h4 className="featured-products__title mb-12 text-[24px] uppercase tracking-widest font-bold text-center">Featured Products</h4>
+        <h4 className="featured-products__title mb-12 text-[24px] uppercase tracking-widest font-bold text-center">
+          Featured Products
+        </h4>
         <div className="featured-products gap-x-8 container grid grid-cols-1 sm:grid-cols-2 gap-y-6 lg:gap-y-0 md:grid-cols-3 lg:grid-cols-4">
           <FeaturedBox />
           <FeaturedBox />

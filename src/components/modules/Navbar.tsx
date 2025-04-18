@@ -20,7 +20,6 @@ type pathsType = {
 };
 function Navbar() {
   const router = useRouter();
-  const [scrolled,setScrolled] = useState<number>(0)
   const [menus, setMenus] = useState<menu[] | []>([]);
 
   useEffect(() => {
