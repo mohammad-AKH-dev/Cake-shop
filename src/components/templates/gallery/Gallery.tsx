@@ -7,22 +7,19 @@ type galleryBoxPropsType = {
   image: string,
   title: string,
   price: number,
-  category: string
-  
+  category: string 
 }
 
-function Gallery() {
+type data = {
+  data: galleryBoxPropsType[]
+}
+
+
+function Gallery({data}: data) {
 
   const [categories,setCategories] = useState<string[]>(['all categories','cakes','cupcakes'])
   const [mainCategory,setMainCategory] = useState<string>('all categories')
-  const [gallery,setGallery] = useState<galleryBoxPropsType[]>([
-    {id: 1 , title: 'sponge cake', price: 13.99 , image: '/images/gallery/gallery-1.jpg', category: 'cakes'},
-    {id: 2 , title: 'angle food cake', price: 12.99 , image: '/images/gallery/gallery-2.jpg', category: 'cakes'},
-    {id: 3 , title: 'genoise cake', price: 14.99 , image: '/images/gallery/gallery-7.jpg', category: 'cakes'},
-    {id: 4 , title: 'Strawberry Cupcake', price: 13.99 , image: '/images/gallery/gallery-3.jpg', category: 'cupcakes'},
-    {id: 5 , title: 'Lemon Cupcake', price: 13.99 , image: '/images/gallery/gallery-4.jpg', category: 'cupcakes'},
-    {id: 6 , title: 'Champagne Cupcake', price: 13.99 , image: '/images/gallery/gallery-8.jpg', category: 'cupcakes'}
-  ])
+
 
   const changleCategoryHandler: (newCategory: string) => void = (newCategory) => {
     setMainCategory(newCategory)
@@ -41,19 +38,19 @@ function Gallery() {
 
        <div className='gallery grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full mt-12'>
           {
-            mainCategory === 'all categories' && gallery.map(product => (
+            mainCategory === 'all categories' && data.map(product => (
               <GalleryBox key={product.id} {...product}/>
             ))
           }
 
           {
-            mainCategory === 'cakes' && gallery.filter(product => product.category === 'cakes').map(product => (
+            mainCategory === 'cakes' && data.filter(product => product.category === 'cakes').map(product => (
               <GalleryBox key={product.id} {...product}/>
             ))
           }
 
           {
-            mainCategory === 'cupcakes' && gallery.filter(product => product.category === 'cupcakes').map(product => (
+            mainCategory === 'cupcakes' && data.filter(product => product.category === 'cupcakes').map(product => (
               <GalleryBox key={product.id} {...product}/>
             ))
           }

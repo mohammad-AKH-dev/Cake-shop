@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { FaLocationDot } from "react-icons/fa6";
-import data from '../../../data/db.json'
 import { MdEmail } from "react-icons/md";
 import { IoMenuSharp, IoSearchOutline } from "react-icons/io5";
 import { FaShoppingCart } from "react-icons/fa";

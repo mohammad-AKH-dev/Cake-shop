@@ -1,5 +1,5 @@
 import CategoryInput from "@/components/modules/shop/CategoryInput";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactRangeSliderInput, { InputEvent } from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
 import { GoSearch } from "react-icons/go";
@@ -18,34 +18,60 @@ import { RiLayoutGrid2Fill } from "react-icons/ri";
 import ProductBox from "@/components/modules/ProductBox";
 import Link from "next/link";
 import RowProductBox from "@/components/modules/shop/RowProductBox";
+import Pagination from "@/components/modules/Pagination";
+import { useRouter } from "next/router";
 
-function Shop() {
-  const [categories, setCategories] = useState([
-    {
-      value: "all",
-      count: 18,
-    },
-    {
-      value: "cakes",
-      count: 9,
-    },
-    {
-      value: "puddings",
-      count: 5,
-    },
-    {
-      value: "sweets",
-      count: 8,
-    },
-  ]);
+type productBoxType = {
+  id: number;
+  title: string;
+  discount?: string;
+  price: string;
+  score: number;
+  category: "cakes" | "puddings" | "Sweets";
+  sources: string[];
+};
+
+type categoryType = {
+  value: string;
+  count: number;
+};
+
+type shopComponentPropsType = {
+  products: productBoxType[];
+  categories: categoryType[];
+};
+
+function Shop(props: shopComponentPropsType) {
+  const { products, categories } = props;
   const [mainCategory, setMainCategory] = useState<string>("all");
+  const router = useRouter();
   const [minLength, setMinLength] = useState<number>(66);
   const [maxLength, setMaxLength] = useState<number>(635);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [columnRowsCount, setRowsCount] = useState(9);
+  const [rowRowsCount, setRowRowsCount] = useState(6);
   const [grid, setGrid] = useState("column");
+  let endIndex = grid === 'column' ? currentPage * columnRowsCount : Number(router.query.id) * rowRowsCount
+  let startIndex = grid === 'column' ? endIndex - columnRowsCount : endIndex - rowRowsCount
   const handleRangeInput = (event: InputEvent) => {
     setMinLength(event[0]);
     setMaxLength(event[1]);
   };
+
+  useEffect(() => {
+    if (grid === "column" && Number(router.query.id) <= 3) {
+       endIndex = currentPage * columnRowsCount;
+       startIndex = endIndex - columnRowsCount;
+      setCurrentPage(Number(router.query.id))
+    }else {
+      setCurrentPage(1)
+    }
+
+    if (grid === "row") {
+       endIndex = Number(router.query.id) * rowRowsCount;
+       startIndex = endIndex - rowRowsCount;
+    }
+  }, [router.query.id]);
 
   return (
     <div
@@ -77,7 +103,10 @@ function Shop() {
             grid === "column" &&
             "flex-col lg:flex-row gap-y-4 lg:gap-y-0 lg:items-center gap-x-3"
           } 
-        ${grid === "row" && "items-center justify-between lg:justify-normal lg:gap-x-3"} mt-9`}
+        ${
+          grid === "row" &&
+          "items-center justify-between lg:justify-normal lg:gap-x-3"
+        } mt-9`}
         >
           <div
             className="filter-btn py-3 px-6 flex items-center justify-center
@@ -143,7 +172,7 @@ function Shop() {
         {/* left section when grid row */}
         {grid === "row" && (
           <>
-          <div className="categories-infos hidden lg:block">
+            <div className="categories-infos hidden lg:block">
               <h4
                 className="uppercase tracking-widest border-b border-b-title pb-[14px]
           text-title text-[16px] mt-10 font-bold mb-10"
@@ -184,51 +213,51 @@ function Shop() {
                 <PopularProductsBox />
               </div>
             </div>
-          <div className="left-content__row-wrapper mb-16 flex flex-col sm:flex-row justify-between gap-x-12">
-            <div className="left-section-row w-full sm:w-[50%]">
-              <div className="categories-infos">
-                <h4
-                  className="uppercase tracking-widest border-b border-b-title pb-[14px]
+            <div className="left-content__row-wrapper mb-16 flex flex-col  justify-between gap-x-12">
+              <div className="left-section-row w-full">
+                <div className="categories-infos">
+                  <h4
+                    className="uppercase tracking-widest border-b border-b-title pb-[14px]
           text-title text-[16px] mt-10 font-bold mb-10"
-                >
-                  categories
-                </h4>
-                <div className="categories flex flex-col gap-y-4">
-                  {categories.map((category) => (
-                    <CategoryInput
-                      value={category.value}
-                      count={category.count}
-                      checked={category.value === mainCategory ? true : false}
-                      onChange={setMainCategory}
-                    />
-                  ))}
+                  >
+                    categories
+                  </h4>
+                  <div className="categories flex flex-col gap-y-4">
+                    {categories.map((category) => (
+                      <CategoryInput
+                        value={category.value}
+                        count={category.count}
+                        checked={category.value === mainCategory ? true : false}
+                        onChange={setMainCategory}
+                      />
+                    ))}
+                  </div>
+                </div>
+                <div className="search-input p-4 mt-12 flex items-center justify-between bg-[#f9faf9]">
+                  <input
+                    type="text"
+                    className="placeholder:text-text outline-none border-none bg-transparent text-text w-[90%]"
+                    placeholder="Search in shop..."
+                  />
+                  <GoSearch className="text-[20px] cursor-pointer transition-all hover:text-primary" />
                 </div>
               </div>
-              <div className="search-input p-4 mt-12 flex items-center justify-between bg-[#f9faf9]">
-                <input
-                  type="text"
-                  className="placeholder:text-text outline-none border-none bg-transparent text-text w-[90%]"
-                  placeholder="Search in shop..."
-                />
-                <GoSearch className="text-[20px] cursor-pointer transition-all hover:text-primary" />
-              </div>
-            </div>
-            <div className="right-section-row w-full sm:w-[50%]">
-              <div className="popular-products__wrapper ">
-                <h4
-                  className=" uppercase tracking-widest border-b border-b-title pb-[14px]
+              <div className="right-section-row w-full">
+                <div className="popular-products__wrapper ">
+                  <h4
+                    className=" uppercase tracking-widest border-b border-b-title pb-[14px]
           text-title text-[16px] mt-10 font-bold mb-10"
-                >
-                  popular products
-                </h4>
-                <div className="popular-products flex flex-col gap-y-4">
-                  <PopularProductsBox />
-                  <PopularProductsBox />
-                  <PopularProductsBox />
+                  >
+                    popular products
+                  </h4>
+                  <div className="popular-products flex flex-col gap-y-4">
+                    <PopularProductsBox />
+                    <PopularProductsBox />
+                    <PopularProductsBox />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
           </>
         )}
       </div>
@@ -290,38 +319,26 @@ function Shop() {
         {/* column products */}
         {grid === "column" && (
           <div className="columns-products-wrapper grid grid-cols-1 gap-y-12 sm:gap-y-10 gap-x-6 sm:grid-cols-2  lg:grid-cols-3 mt-4">
-            <ProductBox />
-            <ProductBox />
-            <ProductBox />
-            <ProductBox />
-            <ProductBox />
-            <ProductBox />
-            <ProductBox />
-            <ProductBox />
-            <ProductBox />
+            {products.slice(startIndex, endIndex).map((product) => (
+              <ProductBox key={product.id} {...product} />
+            ))}
           </div>
         )}
         {/* row products */}
         {grid === "row" && (
           <div className="row-products-wrapper mt-11 gap-y-12 flex flex-col">
-            <RowProductBox />
-            <RowProductBox />
-            <RowProductBox />
+            {
+              products.slice(startIndex,endIndex).map(product => (
+                <RowProductBox key={product.id} {...product}/>
+              ))
+            }
           </div>
         )}
-        <div className="pagination flex items-center justify-center mt-12 gap-x-3 flex-wrap">
-          {new Array(3).fill(0).map((item, index) => (
-            <Link
-              className={`py-[5px] px-4 rounded-md ${
-                index + 1 === 1 && "bg-primary text-white"
-              } hover:bg-primary
-               text-title text-[18px] transition-all hover:text-white`}
-              href={`/shop/${index}`}
-            >
-              {index + 1}
-            </Link>
-          ))}
-        </div>
+        <Pagination
+          length={products.length}
+          postsPerPage={grid === "column" ? columnRowsCount : rowRowsCount}
+          currentPage={grid === "column" ? currentPage : Number(router.query.id)}
+        />
       </div>
     </div>
   );
