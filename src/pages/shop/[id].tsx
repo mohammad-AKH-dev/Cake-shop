@@ -29,7 +29,7 @@ function ShopPage(props: shopPagePropsType) {
   const {categories , products} = props
   return (
     <div className='shop-page relative z-[999]'>
-      <PageHeader title='shop'/>
+      <PageHeader title='shop' customPath='/shop/1'/>
       <div className="container mt-24">
          <Shop products={products} categories={categories}/>
       </div>

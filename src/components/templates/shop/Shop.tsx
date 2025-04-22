@@ -47,12 +47,16 @@ function Shop(props: shopComponentPropsType) {
   const router = useRouter();
   const [minLength, setMinLength] = useState<number>(66);
   const [maxLength, setMaxLength] = useState<number>(635);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [columnRowsCount, setRowsCount] = useState(9);
-  const [rowRowsCount, setRowRowsCount] = useState(6);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [columnRowsCount, setRowsCount] = useState<number>(9);
+  const [rowRowsCount, setRowRowsCount] = useState<number>(6);
   const [grid, setGrid] = useState("column");
-  let endIndex = grid === 'column' ? currentPage * columnRowsCount : Number(router.query.id) * rowRowsCount
-  let startIndex = grid === 'column' ? endIndex - columnRowsCount : endIndex - rowRowsCount
+  let endIndex =
+    grid === "column"
+      ? currentPage * columnRowsCount
+      : Number(router.query.id) * rowRowsCount;
+  let startIndex =
+    grid === "column" ? endIndex - columnRowsCount : endIndex - rowRowsCount;
   const handleRangeInput = (event: InputEvent) => {
     setMinLength(event[0]);
     setMaxLength(event[1]);
@@ -60,16 +64,16 @@ function Shop(props: shopComponentPropsType) {
 
   useEffect(() => {
     if (grid === "column" && Number(router.query.id) <= 3) {
-       endIndex = currentPage * columnRowsCount;
-       startIndex = endIndex - columnRowsCount;
-      setCurrentPage(Number(router.query.id))
-    }else {
-      setCurrentPage(1)
+      endIndex = currentPage * columnRowsCount;
+      startIndex = endIndex - columnRowsCount;
+      setCurrentPage(Number(router.query.id));
+    } else {
+      setCurrentPage(1);
     }
 
     if (grid === "row") {
-       endIndex = Number(router.query.id) * rowRowsCount;
-       startIndex = endIndex - rowRowsCount;
+      endIndex = Number(router.query.id) * rowRowsCount;
+      startIndex = endIndex - rowRowsCount;
     }
   }, [router.query.id]);
 
@@ -162,9 +166,13 @@ function Shop(props: shopComponentPropsType) {
                 popular products
               </h4>
               <div className="popular-products flex flex-col gap-y-4">
-                <PopularProductsBox />
-                <PopularProductsBox />
-                <PopularProductsBox />
+                {products.length &&
+                  [...products]
+                    .sort((a, b) => b.score - a.score)
+                    .slice(0, 3)
+                    .map((product) => (
+                      <PopularProductsBox key={product.id} {...product} />
+                    ))}
               </div>
             </div>
           </>
@@ -208,9 +216,13 @@ function Shop(props: shopComponentPropsType) {
                 popular products
               </h4>
               <div className="popular-products flex flex-col gap-y-4">
-                <PopularProductsBox />
-                <PopularProductsBox />
-                <PopularProductsBox />
+                {products.length &&
+                  [...products]
+                    .sort((a, b) => b.score - a.score)
+                    .slice(0, 3)
+                    .map((product) => (
+                      <PopularProductsBox key={product.id} {...product} />
+                    ))}
               </div>
             </div>
             <div className="left-content__row-wrapper mb-16 flex flex-col  justify-between gap-x-12">
@@ -251,9 +263,13 @@ function Shop(props: shopComponentPropsType) {
                     popular products
                   </h4>
                   <div className="popular-products flex flex-col gap-y-4">
-                    <PopularProductsBox />
-                    <PopularProductsBox />
-                    <PopularProductsBox />
+                    {products.length &&
+                      [...products]
+                        .sort((a, b) => b.score - a.score)
+                        .slice(0, 3)
+                        .map((product) => (
+                          <PopularProductsBox key={product.id} {...product} />
+                        ))}
                   </div>
                 </div>
               </div>
@@ -327,17 +343,17 @@ function Shop(props: shopComponentPropsType) {
         {/* row products */}
         {grid === "row" && (
           <div className="row-products-wrapper mt-11 gap-y-12 flex flex-col">
-            {
-              products.slice(startIndex,endIndex).map(product => (
-                <RowProductBox key={product.id} {...product}/>
-              ))
-            }
+            {products.slice(startIndex, endIndex).map((product) => (
+              <RowProductBox key={product.id} {...product} />
+            ))}
           </div>
         )}
         <Pagination
           length={products.length}
           postsPerPage={grid === "column" ? columnRowsCount : rowRowsCount}
-          currentPage={grid === "column" ? currentPage : Number(router.query.id)}
+          currentPage={
+            grid === "column" ? currentPage : Number(router.query.id)
+          }
         />
       </div>
     </div>

@@ -1,6 +1,6 @@
 import PageHeader from "@/components/modules/PageHeader";
 import Image from "next/image";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FaStar } from "react-icons/fa6";
 import { FaRegStar } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa6";
@@ -21,6 +21,7 @@ import ContactInput from "@/components/modules/contact/ContactInput";
 import { useForm } from "react-hook-form";
 import ProductBox from "@/components/modules/ProductBox";
 import FeaturedBox from "@/components/modules/product/FeaturedBox";
+import { Context } from "vm";
 type IFormInput = {
   firstname: string;
   lastname: string;
@@ -29,8 +30,23 @@ type IFormInput = {
   phone: string;
 };
 
-function SingleProduct() {
+type productBoxType = {
+  id: number;
+  title: string;
+  discount?: string;
+  price: string;
+  score: number;
+  category: "cakes" | "puddings" | "Sweets";
+  sources: string[];
+};
+
+type singleProductPropsType = {
+  product: productBoxType;
+};
+
+function SingleProduct({ product }: singleProductPropsType) {
   const router = useRouter();
+  const { sources, title, price, category, score, discount } = product;
   const [images, setImages] = useState([
     "/images/products/single-product-1.png",
     "/images/products/single-product-2.png",
@@ -38,6 +54,7 @@ function SingleProduct() {
   ]);
   const [activeImage, setActiveImage] = useState(0);
   const swiperRef = useRef<SwiperClass>(null);
+  const {slug} = router.query
   const {
     register,
     handleSubmit,
@@ -55,7 +72,8 @@ function SingleProduct() {
     <div className="single-product__page relative z-[999]">
       <PageHeader
         title="single shop"
-        paths={["shop", `${router.query.product}`]}
+        paths={["shop", `${router?.query?.slug?.slice(0,1)}`]}
+        mainPath={`/product/${slug?.slice(0,1)}/${slug?.slice(1,2)}`}
       />
       <div className="container single-product__content grid gap-x-12 grid-cols-1 gap-y-12  md:grid-cols-2 mt-24">
         <div className="single-product__left-section">
@@ -67,23 +85,25 @@ function SingleProduct() {
             onSlideChange={changeImageHandler}
             onSwiper={(swiper) => (swiperRef.current = swiper)}
           >
-            {images.map((image) => (
+            {sources.map((image, index) => (
               <SwiperSlide>
                 <div
-                  className="w-full lg:max-w-[540px]
-           bg-new-products flex items-center justify-center"
+                  className="w-full h-[500px]
+           bg-new-products flex items-center justify-center overflow-auto"
                 >
-                  <img
+                  <Image
+                    width={540}
+                    height={600}
                     src={image}
                     alt="cake"
-                    className="object-cover scale-90 lg:scale-100 min-w-full h-full"
+                    className="object-contain scale-75 lg:scale-50 min-w-full  h-full"
                   />
                 </div>
               </SwiperSlide>
             ))}
           </Swiper>
           <div className="product-images mt-6 grid grid-cols-3 gap-x-4 max-w-[540px]">
-            {images.map((image, index) => (
+            {sources.map((image, index) => (
               <div
                 className={`image-wrapper cursor-pointer overflow-hidden 
                  ${activeImage === index && "shadow-single-product"}`}
@@ -95,7 +115,7 @@ function SingleProduct() {
                 <Image
                   src={image}
                   className={`p-4 bg-new-products 
-                    transition-all hover:scale-110 ${
+                    transition-all hover:scale-110 min-h-full flex items-center justify-center${
                       activeImage === index && "scale-105"
                     }`}
                   width={189}
@@ -108,18 +128,32 @@ function SingleProduct() {
         </div>
         <div className="single-product__right-section text-center md:text-left flex items-center justify-center flex-col md:block">
           <h3 className="single-product__title font-bold text-[36px] md:text-[28px] lg:text-[36px] tracking-wider">
-            Chocolate Truffles
+            {title}
           </h3>
           <div className="single-product__status flex items-center gap-x-6 mt-3 mb-8">
-            <span className="single-product__price text-[24px] md:text-[20px] lg:text-[24px] text-primary font-bold">
-              $23
-            </span>
+            <div className="flex gap-x-2">
+              {discount ? (
+                <>
+                  <span className="single-product__price text-[24px] md:text-[20px] lg:text-[24px] line-through text-text font-bold">
+                    ${price}
+                  </span>
+                  <span className="single-product__discount text-[24px] md:text-[20px] lg:text-[24px] text-primary font-bold">
+                    ${discount}
+                  </span>
+                </>
+              ) : (
+                <span className="single-product__price text-[24px] md:text-[20px] lg:text-[24px] text-primary font-bold">
+                  ${price}
+                </span>
+              )}
+            </div>
             <div className="single-product__scores flex items-center text-[20px] text-yellow-400 gap-x-2">
-              <FaStar />
-              <FaStar />
-              <FaStar />
-              <FaStar />
-              <FaRegStar />
+              {new Array(Math.ceil(score)).fill(0).map((item, index) => (
+                <FaStar />
+              ))}
+              {new Array(Math.ceil(5 - score)).fill(0).map((item, index) => (
+                <FaRegStar />
+              ))}
             </div>
           </div>
           <p
@@ -135,7 +169,7 @@ function SingleProduct() {
             <div className="single-product__category flex items-center gap-x-1">
               <span>Categories:</span>
               <span className="category text-text text-[13px] font-normal">
-                Sweets
+                {category}
               </span>
             </div>
             <div className="single-product__weight flex items-center gap-x-1">
@@ -266,6 +300,32 @@ function SingleProduct() {
       </div>
     </div>
   );
+}
+
+export async function getStaticPaths() {
+  const res = await fetch(
+    "https://cake-shop-api-yhrn.onrender.com/api/products"
+  );
+  const products = await res.json();
+
+  const paths = products.map((product: productBoxType) => ({
+    params: { slug: [product.title, product.id.toString()] },
+  }));
+
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps(context: Context) {
+  const { params } = context;
+  const { slug } = params;
+  const res = await fetch(
+    `https://cake-shop-api-yhrn.onrender.com/api/products/${slug[1]}`
+  );
+  const product = await res.json();
+
+  return {
+    props: { product },
+  };
 }
 
 export default SingleProduct;

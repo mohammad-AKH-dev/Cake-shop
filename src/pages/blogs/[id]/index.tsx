@@ -1,12 +1,15 @@
 import BlogBox from "@/components/modules/blogs/BlogBox";
 import PageHeader from "@/components/modules/PageHeader";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 
 function Blog() {
+  const router = useRouter()
+  console.log(router.query)
   return (
     <div className="blog-page relative z-[999]">
-      <PageHeader title="blog" />
+      <PageHeader title="blog" customPath='/blogs/1' />
       <div className="container">
         <div className="blogs-wrapper grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
           <BlogBox />

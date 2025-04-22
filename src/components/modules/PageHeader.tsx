@@ -6,13 +6,16 @@ import { FaArrowRight } from "react-icons/fa";
 type PageHeaderPropsType = {
   title: string;
   paths?: string[];
+  mainPath?: string
+  customPath?: string
 };
 
 
 
 function PageHeader(props: PageHeaderPropsType) {
-  const { title, paths } = props;
+  const { title, paths , mainPath , customPath} = props;
   const router = useRouter()
+  console.log(router.asPath)
 
   return (
     <>
@@ -42,7 +45,7 @@ function PageHeader(props: PageHeaderPropsType) {
           paths.map((path,index) => (
             <div className="flex items-center gap-x-3">
               <Link
-                href={index === 0 ? `/${path}` : `${router.query.name}`}
+                href={index === 0 ? `/${path}/1` : `${mainPath ? mainPath : router.query.name}`}
                 className="text-[12px] uppercase text-title
                 hover:text-title transition-all font-bold tracking-widest"
               >
@@ -54,7 +57,7 @@ function PageHeader(props: PageHeaderPropsType) {
         ) : (
           <>
             <Link
-              href={`/${title}`}
+              href={`${customPath ? customPath : `/${title}`}`}
               className="text-[12px] uppercase text-title
                 hover:text-title transition-all font-bold tracking-widest"
             >

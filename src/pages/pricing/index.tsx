@@ -5,7 +5,7 @@ import React from 'react'
 function index() {
   return (
     <div className='pricing-page relative z-[999]'>
-        <PageHeader title='pricing list'/>
+        <PageHeader title='pricing list' customPath='/pricing'/>
        <div className="container">
           <Pricing/>
        </div>

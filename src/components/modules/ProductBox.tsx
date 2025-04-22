@@ -15,12 +15,13 @@ type productBoxType = {
 };
 
 function ProductBox(props: productBoxType) {
-  const { title, discount, price , sources} = props;
+  const {id , title, discount, price , sources} = props;
+  console.log(sources)
 
   return (
     <>
       <Link
-        href={`/product/${title}`}
+        href={`/product/${title}/${id}`}
         className="product-box shadow-product-box flex items-center justify-center flex-col gap-y-4 py-8 transition-all
      delay-100 hover:translate-y-7 group  "
       >
