@@ -16,7 +16,6 @@ type productBoxType = {
 
 function ProductBox(props: productBoxType) {
   const {id , title, discount, price , sources} = props;
-  console.log(sources)
 
   return (
     <>

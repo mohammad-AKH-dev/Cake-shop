@@ -45,10 +45,13 @@ function Shop(props: shopComponentPropsType) {
   const { products, categories } = props;
   const [mainCategory, setMainCategory] = useState<string>("all");
   const router = useRouter();
-  const [minLength, setMinLength] = useState<number>(66);
-  const [maxLength, setMaxLength] = useState<number>(635);
+  const [minLength, setMinLength] = useState<number>(15);
+  const [maxLength, setMaxLength] = useState<number>(60);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [columnRowsCount, setRowsCount] = useState<number>(9);
+  const [fillteredProducts, setFillteredProducts] = useState<
+    productBoxType[] | []
+  >([]);
   const [rowRowsCount, setRowRowsCount] = useState<number>(6);
   const [grid, setGrid] = useState("column");
   let endIndex =
@@ -61,6 +64,48 @@ function Shop(props: shopComponentPropsType) {
     setMinLength(event[0]);
     setMaxLength(event[1]);
   };
+
+  const setNewProductsFilter = () => {
+    const newProducts = [...products].filter(
+      (product) => +product.price >= minLength && +product.price <= maxLength
+    );
+    setFillteredProducts(newProducts);
+  };
+
+  useEffect(() => {
+    setFillteredProducts(products);
+    console.log(products)
+  }, []);
+
+  useEffect(() => {
+     switch(mainCategory) {
+      case "all" : {
+        setFillteredProducts([...products])
+        console.log('all =>' , fillteredProducts)
+      }
+      break;
+      case 'cakes' : {
+        const cakeProducts = [...products].filter(product => product.category === 'cakes')
+        console.log('cakes => ', cakeProducts)
+        setFillteredProducts(cakeProducts)
+       
+      }
+      break;
+      case 'puddings': {
+        const puddings = [...products].filter(product => product.category === 'puddings');
+        console.log('puddings =>',puddings)
+        setFillteredProducts(puddings)
+      
+      }
+      break;
+      case 'Sweets': {
+        const sweets = [...products].filter(product => product.category === 'Sweets')
+        console.log('sweets =>',sweets)
+        setFillteredProducts(sweets)
+      
+      }
+     }
+  },[mainCategory])
 
   useEffect(() => {
     if (grid === "column" && Number(router.query.id) <= 3) {
@@ -97,8 +142,8 @@ function Shop(props: shopComponentPropsType) {
           filter by price
         </h4>
         <ReactRangeSliderInput
-          min={0}
-          max={999}
+          min={10}
+          max={100}
           value={[minLength, maxLength]}
           onInput={(event) => handleRangeInput(event)}
         />
@@ -116,7 +161,12 @@ function Shop(props: shopComponentPropsType) {
             className="filter-btn py-3 px-6 flex items-center justify-center
            cursor-pointer bg-hover transition-all hover:bg-primary rounded-lg"
           >
-            <span className="uppercase tracking-wider text-white">filter</span>
+            <span
+              className="uppercase tracking-wider text-white"
+              onClick={setNewProductsFilter}
+            >
+              filter
+            </span>
           </div>
           <div className="prices-wrapper flex items-ceter gap-x-1 ml-1 lg:ml-0">
             <span>Price :</span>
@@ -285,7 +335,8 @@ function Shop(props: shopComponentPropsType) {
       >
         <div className="right-section__title-wrapper flex flex-col sm:flex-row gap-y-4 sm:gap-y-0 items-center justify-between px-6">
           <div className="show-result text-[15px] ">
-            Showing 1-9 of 28 results
+            Showing {`${startIndex + 1}-${endIndex}`} of {products.length + 1}{" "}
+            results
           </div>
           <div className="sorting-wrapper flex items-center gap-x-6 justify-between w-full sm:w-fit">
             <Select>
@@ -335,21 +386,23 @@ function Shop(props: shopComponentPropsType) {
         {/* column products */}
         {grid === "column" && (
           <div className="columns-products-wrapper grid grid-cols-1 gap-y-12 sm:gap-y-10 gap-x-6 sm:grid-cols-2  lg:grid-cols-3 mt-4">
-            {products.slice(startIndex, endIndex).map((product) => (
-              <ProductBox key={product.id} {...product} />
-            ))}
+            {[...fillteredProducts]
+              .slice(startIndex, endIndex)
+              .map((product) => (
+                <ProductBox key={product.id} {...product} />
+              ))}
           </div>
         )}
         {/* row products */}
         {grid === "row" && (
           <div className="row-products-wrapper mt-11 gap-y-12 flex flex-col">
-            {products.slice(startIndex, endIndex).map((product) => (
+            {fillteredProducts.slice(startIndex, endIndex).map((product) => (
               <RowProductBox key={product.id} {...product} />
             ))}
           </div>
         )}
         <Pagination
-          length={products.length}
+          length={fillteredProducts.length}
           postsPerPage={grid === "column" ? columnRowsCount : rowRowsCount}
           currentPage={
             grid === "column" ? currentPage : Number(router.query.id)
