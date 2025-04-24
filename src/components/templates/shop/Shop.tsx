@@ -20,6 +20,7 @@ import Link from "next/link";
 import RowProductBox from "@/components/modules/shop/RowProductBox";
 import Pagination from "@/components/modules/Pagination";
 import { useRouter } from "next/router";
+import SearchedProduct from "@/components/modules/shop/SearchedProduct";
 
 type productBoxType = {
   id: number;
@@ -47,8 +48,16 @@ function Shop(props: shopComponentPropsType) {
   const router = useRouter();
   const [minLength, setMinLength] = useState<number>(15);
   const [maxLength, setMaxLength] = useState<number>(60);
+  const [searchedProduct, setSearchedProduct] = useState<string>("");
+  const [searchedProducts, setSearchedProducts] = useState<
+    productBoxType[] | [] | null
+  >(null);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [columnRowsCount, setRowsCount] = useState<number>(9);
+  const [isEmpty, setIsEmpty] = useState<boolean>(false);
+  const [isMatchedProducts, setIsMatchedProducts] = useState<boolean>(true);
+  const [isShowSearchedProducts, setIsShowSearchedProducts] =
+    useState<boolean>(false);
   const [fillteredProducts, setFillteredProducts] = useState<
     productBoxType[] | []
   >([]);
@@ -72,40 +81,87 @@ function Shop(props: shopComponentPropsType) {
     setFillteredProducts(newProducts);
   };
 
+  const searchProduct = () => {
+    const mainItem = fillteredProducts.filter((product) =>
+      product.title.toLowerCase().includes(searchedProduct.toLowerCase())
+    );
+    setSearchedProducts(mainItem);
+
+    // if searched products === [] this conditional renders
+  
+    if (!mainItem.length) {
+      setIsMatchedProducts(false);
+      setIsShowSearchedProducts(false);
+    } else {
+      setIsEmpty(false);
+      setIsMatchedProducts(true);
+      setIsShowSearchedProducts(true);
+    }
+
+    // if search input === '' this conditional renders
+  
+    if (!searchedProduct.trim().length) {
+      setIsEmpty(true);
+      setIsShowSearchedProducts(false);
+    }else {
+      setIsEmpty(false);
+      setIsShowSearchedProducts(true);
+    }
+  };
+  
+  const searchWithEnter = (event: React.KeyboardEvent) => {
+    if (event.key === "Enter") {
+      searchProduct();
+    }
+  };
+
+  
+
   useEffect(() => {
     setFillteredProducts(products);
-    console.log(products)
+    const closeSearchedProducts = () => {
+      setIsShowSearchedProducts(false)
+      setSearchedProducts([])
+      setIsEmpty(false)
+      setIsMatchedProducts(true)
+    }
+
+    window.addEventListener('click',closeSearchedProducts)
+
+    return () => window.removeEventListener('click',closeSearchedProducts)
   }, []);
 
   useEffect(() => {
-     switch(mainCategory) {
-      case "all" : {
-        setFillteredProducts([...products])
-        console.log('all =>' , fillteredProducts)
+    switch (mainCategory) {
+      case "all":
+        {
+          setFillteredProducts([...products]);
+        }
+        break;
+      case "cakes":
+        {
+          const cakeProducts = [...products].filter(
+            (product) => product.category === "cakes"
+          );
+          setFillteredProducts(cakeProducts);
+        }
+        break;
+      case "puddings":
+        {
+          const puddings = [...products].filter(
+            (product) => product.category === "puddings"
+          );
+          setFillteredProducts(puddings);
+        }
+        break;
+      case "Sweets": {
+        const sweets = [...products].filter(
+          (product) => product.category === "Sweets"
+        );
+        setFillteredProducts(sweets);
       }
-      break;
-      case 'cakes' : {
-        const cakeProducts = [...products].filter(product => product.category === 'cakes')
-        console.log('cakes => ', cakeProducts)
-        setFillteredProducts(cakeProducts)
-       
-      }
-      break;
-      case 'puddings': {
-        const puddings = [...products].filter(product => product.category === 'puddings');
-        console.log('puddings =>',puddings)
-        setFillteredProducts(puddings)
-      
-      }
-      break;
-      case 'Sweets': {
-        const sweets = [...products].filter(product => product.category === 'Sweets')
-        console.log('sweets =>',sweets)
-        setFillteredProducts(sweets)
-      
-      }
-     }
-  },[mainCategory])
+    }
+  }, [mainCategory]);
 
   useEffect(() => {
     if (grid === "column" && Number(router.query.id) <= 3) {
@@ -199,13 +255,48 @@ function Shop(props: shopComponentPropsType) {
               </div>
             </div>
             {/* search input */}
-            <div className="search-input p-4 mt-12 flex items-center justify-between bg-[#f9faf9]">
+            <div className="search-input relative p-4 mt-12 flex items-center justify-between bg-[#f9faf9]">
               <input
                 type="text"
                 className="placeholder:text-text outline-none border-none bg-transparent text-text w-[90%]"
                 placeholder="Search in shop..."
+                value={searchedProduct}
+                onChange={(event) => setSearchedProduct(event.target.value)}
+                onKeyDown={(event: React.KeyboardEvent) => searchWithEnter(event)}
               />
-              <GoSearch className="text-[20px] cursor-pointer transition-all hover:text-primary" />
+              <GoSearch
+                className="text-[20px] cursor-pointer transition-all hover:text-primary"
+                onClick={searchProduct}
+              />
+              {searchedProducts?.length && isShowSearchedProducts ? (
+                <div className="searched-products left-0 right-0 absolute top-[3rem] flex flex-col gap-y-4 bg-new-products">
+                  {searchedProducts.map((product) => (
+                    <SearchedProduct {...product} key={product.id} />
+                  ))}
+                </div>
+              ) : null}
+
+              {!isMatchedProducts ? (
+                <div
+                  className="searched-products text-center leading-6 tracking-widest
+              left-0 right-0 p-12 absolute top-[3rem] flex flex-col gap-y-4 bg-new-products"
+                >
+                  <span className="font-bold">
+                    can't find any product with "{searchedProduct}" title
+                  </span>
+                </div>
+              ) : null}
+
+              {isEmpty && (
+                <div
+                  className="searched-products text-center leading-6 tracking-widest
+                 left-0 right-0 p-12 absolute top-[3rem] flex flex-col gap-y-4 bg-new-products"
+                >
+                  <span className="font-bold">
+                    please write something suitable and don't leave input empty!
+                  </span>
+                </div>
+              )}
             </div>
             {/* popular products */}
             <div className="popular-products__wrapper mt-24">

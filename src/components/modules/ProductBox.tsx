@@ -29,6 +29,7 @@ function ProductBox(props: productBoxType) {
           height={127}
           src={sources[0]}
           alt="product-img"
+          className="w-[160px] h-[160px]"
         />
         <h4 className="product-title text-[18px] font-bold hover:text-primary transition-all">
           {title}
