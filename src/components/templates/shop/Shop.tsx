@@ -493,6 +493,7 @@ function Shop(props: shopComponentPropsType) {
           </div>
         )}
         <Pagination
+          href="shop"
           length={fillteredProducts.length}
           postsPerPage={grid === "column" ? columnRowsCount : rowRowsCount}
           currentPage={

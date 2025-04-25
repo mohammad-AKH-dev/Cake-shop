@@ -6,10 +6,11 @@ type paginationPropsType = {
     postsPerPage: number
     length: number
     currentPage?: number
+    href: string
 }
 
     const Pagination = (props: paginationPropsType) => {
-        const {postsPerPage, length, currentPage} = props
+        const {postsPerPage, length, currentPage , href} = props
         const router = useRouter()
         const paginationNumbers = [];
 
@@ -25,7 +26,7 @@ type paginationPropsType = {
                   index + 1 === currentPage && "bg-primary text-white"
                 } hover:bg-primary
                  text-title text-[18px] transition-all hover:text-white`}
-                href={`/shop/${index + 1}`}
+                href={`/${href}/${index + 1}`}
               >
                 {index + 1}
               </Link>
