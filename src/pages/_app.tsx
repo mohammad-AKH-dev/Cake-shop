@@ -2,14 +2,17 @@ import Footer from "@/components/modules/Footer";
 import Navbar from "@/components/modules/Navbar";
 import Topbar from "@/components/modules/Topbar";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
-import { loadSlim } from "@tsparticles/slim"
+import { loadSlim } from "@tsparticles/slim";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-import { useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { Container, ISourceOptions } from "@tsparticles/engine";
+import Sidebar from "@/components/modules/SideBar";
+import { MenuContextProvider, MenusContext } from "@/contexts/MenuContext";
 
 export default function App({ Component, pageProps }: AppProps) {
   const [init, setInit] = useState(false);
+  const menuContext = useContext(MenusContext)
   useEffect(() => {
     initParticlesEngine(async (engine) => {
       await loadSlim(engine);
@@ -18,9 +21,7 @@ export default function App({ Component, pageProps }: AppProps) {
     });
   }, []);
 
-  const particlesLoaded = async (container?: Container) => {
-    console.log(container);
-  };
+
 
   const options: ISourceOptions = useMemo(
     () => ({
@@ -90,28 +91,27 @@ export default function App({ Component, pageProps }: AppProps) {
       },
       detectRetina: true,
     }),
-    [],
+    []
   );
 
   if (init) {
     return (
       <>
-      
-    <Topbar />
-    <Navbar />
-    <Component {...pageProps} />
-    <Footer />
-      <Particles
-        id="tsparticles"
-        particlesLoaded={particlesLoaded}
-        options={options}
-      />
+        <MenuContextProvider>
+          <Topbar />
+          <Navbar />
+          <Sidebar />
+          <Component {...pageProps} />
+          <Footer />
+          <Particles
+            id="tsparticles"
+            
+            options={options}
+          />
+        </MenuContextProvider>
       </>
     );
   }
 
-  return (
-    <>
-    </>
-  );
+  return <></>;
 }

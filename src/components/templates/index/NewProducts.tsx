@@ -58,8 +58,8 @@ function NewProducts(props: newProductsPropsType) {
           }}
         >
           {products.map((product) => (
-            <SwiperSlide>
-              <ProductBox {...product} key={product.id}/>
+            <SwiperSlide key={product.id}>
+              <ProductBox {...product} />
             </SwiperSlide>
           ))}
         </Swiper>

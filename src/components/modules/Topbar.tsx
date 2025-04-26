@@ -4,24 +4,31 @@ import { MdEmail } from "react-icons/md";
 import { IoMenuSharp, IoSearchOutline } from "react-icons/io5";
 import { FaShoppingCart } from "react-icons/fa";
 import { FiMoreVertical } from "react-icons/fi";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { MenusContext } from "@/contexts/MenuContext";
+import { IoMdClose } from "react-icons/io";
 
 function Topbar() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [scrollTop,setScrollTop] = useState<number>(0)
+  const [scrollTop, setScrollTop] = useState<number>(0);
+  const menuContext = useContext(MenusContext);
 
   useEffect(() => {
-     const scrollBar = () => {
-        setScrollTop(window.scrollY) 
-     }
-     window.addEventListener('scroll',scrollBar)
+    const scrollBar = () => {
+      setScrollTop(window.scrollY);
+    };
+    window.addEventListener("scroll", scrollBar);
 
-     return () => removeEventListener('scroll',scrollBar)
+    return () => removeEventListener("scroll", scrollBar);
   }, []);
 
   return (
-    <div className={`Topbar sticky z-[9999] transition-all lg:static top-0 bg-white  ${scrollTop >= 40 ? 'pt-6' : 'pt-0'}
-    right-0 left-0  lg:pt-0 pb-6 px-6 lg:px-0 border-b border-text `}>
+    <div
+      className={`Topbar sticky z-[9999] transition-all lg:static top-0 bg-white  ${
+        scrollTop >= 40 ? "pt-6" : "pt-0"
+      }
+    right-0 left-0  lg:pt-0 pb-6 px-6 lg:px-0 border-b border-text `}
+    >
       <div className="topbar-content px-6 flex relative z-[9999] justify-between items-center">
         <div className="location hidden lg:flex items-center gap-x-4">
           <FaLocationDot className="text-[2rem]" />
@@ -32,7 +39,21 @@ function Topbar() {
           </Link>
         </div>
         <div className="logo-wrapper flex items-center gap-x-3">
-          <IoMenuSharp className="text-[36px] lg:hidden cursor-pointer" />
+          {!menuContext?.isShowMenu ? (
+            <IoMenuSharp
+              className="text-[36px] lg:hidden cursor-pointer"
+              onClick={() =>
+                menuContext?.setShowMenu((prevState) => true)
+              }
+            />
+          ) : (
+            <IoMdClose
+              className="text-[36px] lg:hidden cursor-pointer"
+              onClick={() =>
+                menuContext?.setShowMenu((prevState) => false)
+              }
+            />
+          )}
           <Link href={"/"}>
             <img src="/images/logo/desktop-logo.png" alt="logo" />
           </Link>

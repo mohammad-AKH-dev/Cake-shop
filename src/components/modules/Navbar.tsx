@@ -3,8 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
 import { FaShoppingCart } from "react-icons/fa";
 import { useRouter } from "next/router";
-import { pathToFileURL } from "url";
-import { usePathname } from "next/navigation";
+
 
 type menu = {
   id: number;
@@ -62,7 +61,7 @@ function Navbar() {
       <ul className="navbar-list text-[14px] flex items-center gap-x-10">
         {menus.map((menu) =>
           !menu.paths ? (
-            <li
+            <li key={menu.id}
               className={`navbar-item relative before:transition-all font-bold
          hover:before:w-full before:-top-[28px] ${
            router?.asPath === menu?.href2 && "before:w-full"
@@ -78,7 +77,7 @@ function Navbar() {
             </li>
           ) : (
             <>
-              <li
+              <li key={menu.id}
                 className={`navbar-item relative group before:transition-all font-bold
          hover:before:w-full before:-top-[28px] ${
            router.pathname === menu.href && "before:w-full"
@@ -95,7 +94,7 @@ function Navbar() {
                   transition-all duration-500 w-[250px] p-8 pl-10 font-normal pt-12 bg-white absolute flex flex-col gap-y-8"
                 >
                   {menu.paths.map((route) => (
-                    <li
+                    <li key={route.path}
                       className={`text-[14px] ${
                         router.pathname === route.path && "text-primary"
                       } 
