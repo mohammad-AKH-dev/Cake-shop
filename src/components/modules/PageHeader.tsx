@@ -15,7 +15,6 @@ type PageHeaderPropsType = {
 function PageHeader(props: PageHeaderPropsType) {
   const { title, paths , mainPath , customPath} = props;
   const router = useRouter()
-  console.log(router.asPath)
 
   return (
     <>

@@ -1,5 +1,5 @@
 import CategoryInput from "@/components/modules/shop/CategoryInput";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ReactRangeSliderInput, { InputEvent } from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
 import { GoSearch } from "react-icons/go";
@@ -21,6 +21,8 @@ import RowProductBox from "@/components/modules/shop/RowProductBox";
 import Pagination from "@/components/modules/Pagination";
 import { useRouter } from "next/router";
 import SearchedProduct from "@/components/modules/shop/SearchedProduct";
+import { basketContext } from "@/contexts/BasketContext";
+import toast from "react-hot-toast";
 
 type productBoxType = {
   id: number;
@@ -63,6 +65,7 @@ function Shop(props: shopComponentPropsType) {
   >([]);
   const [rowRowsCount, setRowRowsCount] = useState<number>(6);
   const [grid, setGrid] = useState("column");
+  const BasketContext = useContext(basketContext)
   let endIndex =
     grid === "column"
       ? currentPage * columnRowsCount
@@ -114,6 +117,22 @@ function Shop(props: shopComponentPropsType) {
       searchProduct();
     }
   };
+
+
+  const addProductToBasket = async (product: productBoxType) => {
+      const isInBasket = BasketContext?.basket.some(item => item.id === product.id)
+      if(!isInBasket) {
+        const newProduct = {...product,count: 1}
+        BasketContext?.setBasket(prevState => [...prevState,newProduct])
+        toast.success('product added to basket successfully.',{
+          duration: 3000
+        })
+      }else {
+        toast.error('You have already added this product to your cart.',{
+          duration: 3000
+        })
+      }
+  } 
 
   
 
@@ -480,7 +499,7 @@ function Shop(props: shopComponentPropsType) {
             {[...fillteredProducts]
               .slice(startIndex, endIndex)
               .map((product) => (
-                <ProductBox key={product.id} {...product} />
+                <ProductBox key={product.id} {...product} add={() => addProductToBasket(product)}/>
               ))}
           </div>
         )}
@@ -488,7 +507,7 @@ function Shop(props: shopComponentPropsType) {
         {grid === "row" && (
           <div className="row-products-wrapper mt-11 gap-y-12 flex flex-col">
             {fillteredProducts.slice(startIndex, endIndex).map((product) => (
-              <RowProductBox key={product.id} {...product} />
+              <RowProductBox key={product.id} {...product} onAdd={() => addProductToBasket(product)}/>
             ))}
           </div>
         )}

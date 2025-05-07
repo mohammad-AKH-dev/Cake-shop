@@ -29,7 +29,10 @@ export const MenuContextProvider: React.FC<PropsWithChildren> = ({children}) => 
     const [isShowMenu,setIsShowMenu] = useState<boolean>(false)
 
    
-    const [menus,setMenus] = useState<menu[] | null>([
+    const [menus,setMenus] = useState<menu[] | null>(null)
+
+    useEffect(() => {
+       setMenus([
         { id: 1, title: "HOME", href: "/" },
         { id: 2, title: "GALLERY", href: "/gallery" },
         {
@@ -61,6 +64,7 @@ export const MenuContextProvider: React.FC<PropsWithChildren> = ({children}) => 
         },
         { id: 6, title: "CONTACT US", href: "/contact" },
       ])
+    },[router.query.id])
     
     return (
         <MenusContext.Provider value={{menu: menus , setMenu: setMenus , isShowMenu , setShowMenu: setIsShowMenu}}>

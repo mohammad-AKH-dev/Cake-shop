@@ -5,7 +5,7 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import Link from "next/link";
 
 function Sidebar() {
-  const [selectedMenu, SetSelectedMenu] = useState<string>("");
+  const [selectedMenu, setSelectedMenu] = useState<string>("");
   const [isShowSelectedMenu, setIsShowSelectedMenu] = useState<boolean>(false);
   const MenuContext = useContext(MenusContext);
 
@@ -33,7 +33,7 @@ function Sidebar() {
                   
                   <MdKeyboardArrowDown
                     onClick={() => {
-                      SetSelectedMenu(menu.title);
+                      setSelectedMenu(menu.title);
                       setIsShowSelectedMenu((prevState) => !prevState);
                     }}
                     className={`text-[24px] -mr-7 cursor-pointer transition-all ${

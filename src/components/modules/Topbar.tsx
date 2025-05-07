@@ -43,14 +43,14 @@ function Topbar() {
             <IoMenuSharp
               className="text-[36px] lg:hidden cursor-pointer"
               onClick={() =>
-                menuContext?.setShowMenu((prevState) => true)
+                menuContext?.setShowMenu(true)
               }
             />
           ) : (
             <IoMdClose
               className="text-[36px] lg:hidden cursor-pointer"
               onClick={() =>
-                menuContext?.setShowMenu((prevState) => false)
+                menuContext?.setShowMenu(false)
               }
             />
           )}
