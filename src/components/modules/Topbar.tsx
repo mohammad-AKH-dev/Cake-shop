@@ -171,8 +171,8 @@ function Topbar() {
           <FaShoppingCart className="cursor-pointer" onClick={() => setIsShowBasket(prevState => !prevState)}/>
           {isShowBasket && (
             <div
-              className="items-cart bg-white w-[400px] p-4 tracking-wider h-[300px] 
-          drop-shadow-xl top-10 absolute overflow-y-auto overflow-x-hidden right-0 rounded-sm border-b border-b-[#e1e1e1]"
+              className="items-cart bg-white w-[300px] sm:w-[400px] p-4 tracking-wider h-[300px] 
+          drop-shadow-xl top-10 absolute overflow-y-auto sm:overflow-y-hidden overflow-x-hidden -right-[5rem] sm:right-0 rounded-sm border-b border-b-[#e1e1e1]"
             >
               <div className="basket__header uppercase font-bold">
                 <span className="text-[18px]">in cart:</span>
@@ -213,21 +213,21 @@ function Topbar() {
                 )}
               </div>
               <div
-                className={`basket-footer flex items-center 
+                className={`basket-footer flex flex-col gap-y-4 items-center 
             gap-x-5 justify-between text-[14px] font-bold ${
               !basketItems?.basket.length ? " left-0 right-0 px-4" : "mt-6"
             } bottom-5  w-full`}
               >
                 <Link
                   href={"/cart"}
-                  className="text-title border-2 rounded-md hover:bg-hover transition-all hover:text-white
+                  className="text-title w-full text-center border-2 rounded-md hover:bg-hover transition-all hover:text-white
                 hover:border-[#8c2f55] border-[#151515] p-4 py-4 px-6 uppercase"
                 >
                   go to cart
                 </Link>
                 <div
                   onClick={calculateBasket}
-                  className="text-white bg-primary  rounded-md hover:bg-hover transition-all hover:text-white
+                  className="text-white w-full text-center bg-primary  rounded-md hover:bg-hover transition-all hover:text-white
                 hover:border-[#8c2f55] cursor-pointer p-4 py-4 px-7 uppercase"
                 >
                   checkout
