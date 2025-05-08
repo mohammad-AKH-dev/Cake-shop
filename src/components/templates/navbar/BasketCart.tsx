@@ -42,7 +42,7 @@ function BasketCart(props: basketCartPropsType) {
                <span className='product-price text-[16px] font-bold'>${price}</span>
             </div> 
         </div>
-        <FaXmark className='absolute text-[16px] top-3 -rigth-[10rem] sm:right-0 cursor-pointer' onClick={props.remove}/>
+        <FaXmark className='absolute text-[16px] top-3 -right-[10rem] sm:right-0 cursor-pointer' onClick={props.remove}/>
     </div>
   )
 }
