@@ -19,7 +19,7 @@ function OfferBox() {
         <p className="offer-box__desc text-text max-w-[330px] leading-6 mx-auto mt-4 text-[13px] xl:text-[15px]">
         We provide a variety of cupcakes for any party made with high-quality natural ingredients and no preservatives.
         </p>
-        <Link href={'/blog/3'} className="uppercase border-b-2 hover:border group-hover:hover:border group-hover:hover:border-title group-hover:hover:text-title
+        <Link href={'/blog/1'} className="uppercase border-b-2 hover:border group-hover:hover:border group-hover:hover:border-title group-hover:hover:text-title
           transition-all group-hover:border group-hover:border-primary p-4 group-hover:px-8 group-hover:text-primary
         border-b-text text-text text-[14px] mt-6 pb-1 group-hover:pb-4 font-bold inline-block">
           read more 

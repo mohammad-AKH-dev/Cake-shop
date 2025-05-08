@@ -29,7 +29,7 @@ function RowProductBox(props: productBoxType) {
           alt="product-img"
         />
       </div>
-      <div className="product-content">
+      <div className="product-content text-center py-4">
         <h4 className="product-content__title text-[18px] md:text-[24px] tracking-widest font-bold mb-2">
           {title}
         </h4>

@@ -23,7 +23,7 @@ function SummerSale() {
         </p>
         <div className="-mb-8 md:mb-0 relative z-50">
 
-        <Button title="shop now" href="/shop"/>
+        <Button title="shop now" href="/shop/1"/>
         </div>
       </div>
     </section>
