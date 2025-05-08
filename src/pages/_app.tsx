@@ -7,10 +7,11 @@ import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { useContext, useEffect, useMemo, useState } from "react";
 import { Container, ISourceOptions } from "@tsparticles/engine";
-import Sidebar from "@/components/modules/SideBar";
 import { MenuContextProvider, MenusContext } from "@/contexts/MenuContext";
 import { BasketContextProvider } from "@/contexts/BasketContext";
 import { Toaster } from 'react-hot-toast'
+import Sidebar from "@/components/modules/Sidebar";
+
 
 export default function App({ Component, pageProps }: AppProps) {
   const [init, setInit] = useState(false);
@@ -101,7 +102,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <BasketContextProvider>
             <Topbar />
             <Navbar />
-            <Sidebar />
+            <Sidebar/>
             <Component {...pageProps} />
             <Footer />
             <Particles id="tsparticles" options={options} />
