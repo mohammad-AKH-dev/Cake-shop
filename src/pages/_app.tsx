@@ -4,13 +4,14 @@ import Topbar from "@/components/modules/Topbar";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import "@/styles/globals.css";
+import Sidebar from '../components/modules/Sidebar'
 import type { AppProps } from "next/app";
 import { useContext, useEffect, useMemo, useState } from "react";
 import { Container, ISourceOptions } from "@tsparticles/engine";
 import { MenuContextProvider, MenusContext } from "@/contexts/MenuContext";
 import { BasketContextProvider } from "@/contexts/BasketContext";
 import { Toaster } from 'react-hot-toast'
-import Sidebar from "@/components/modules/Sidebar";
+
 
 
 export default function App({ Component, pageProps }: AppProps) {
