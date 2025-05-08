@@ -29,7 +29,7 @@ type MainPagePropsType = {
 export default function Home(props: MainPagePropsType) {
   const {newProducts} = props
   return (
-    <div className="main-page relative z-[999]">
+    <div className="main-page mx-auto relative z-[999]">
        <Landing/>
        <FreshCakes/>
        <Offers/>

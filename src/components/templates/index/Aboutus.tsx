@@ -65,12 +65,12 @@ function Aboutus() {
           >
             <div className="bg-white ">
               <h5
-                className="right-section__title uppercase bg-[#fff]  text-title tracking-widest transition-all text-[24px] mx-auto max-w-[400px] font-bold
+                className="right-section__title uppercase bg-[#fff]  text-title tracking-widest transition-all text-[24px] mx-auto max-w-[250px] sm:max-w-[400px] font-bold
               hover:text-primary"
               >
                 {selectedTab.title}
               </h5>
-              <p className="right-section__paragraph text-title mt-6 leading-6 text-[15px] bg-[#fff] mx-auto max-w-[450px]">
+              <p className="right-section__paragraph text-title mt-6 leading-6 text-[15px] bg-[#fff] mx-auto max-w-[250px] sm:max-w-[450px]">
                 {selectedTab.desc}
               </p>
               <Link
