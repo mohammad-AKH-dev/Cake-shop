@@ -29,7 +29,7 @@ function BasketCart(props: basketCartPropsType) {
    const { sources , title , count, price} = props.product
 
   return (
-    <div className='bakset-cart flex overflow-y-scroll items-center gap-x-5 relative'>
+    <div className='bakset-cart flex overflow-y-scroll sm:overflow-y-hidden items-center gap-x-5 relative'>
         <Image width={300} height={300} src={sources[0]} alt={title} className='h-[100px] w-[100px] bg-new-products'/>
         <div className='cart-infos'>
             <h4 className='cart-title text-[16px] font-bold'>{title}</h4>
@@ -42,7 +42,7 @@ function BasketCart(props: basketCartPropsType) {
                <span className='product-price text-[16px] font-bold'>${price}</span>
             </div> 
         </div>
-        <FaXmark className='absolute text-[16px] top-3 right-0 cursor-pointer' onClick={props.remove}/>
+        <FaXmark className='absolute text-[16px] top-3 -rigth-[10rem] sm:right-0 cursor-pointer' onClick={props.remove}/>
     </div>
   )
 }
