@@ -101,7 +101,7 @@ function Cart() {
         <Table className="mt-16">
           <TableCaption>
             <div className="caption-wrapper flex items-center justify-between container mt-12">
-              <div className="table-caption__left-section flex items-center gap-x-4">
+              <div className="table-caption__left-section flex flex-col sm:flex-row gap-y-4 items-center gap-x-4">
                 <input
                   type="text"
                   placeholder="Coupon code"
@@ -115,7 +115,7 @@ function Cart() {
                   apply
                 </button>
               </div>
-              <div className="table-caption__right-section flex items-center gap-x-8">
+              <div className="table-caption__right-section flex flex-col sm:flex-row gap-y-4 items-center gap-x-8">
                 <div className="total-price__wrapper flex items-center gap-x-4">
                   <span className="text-text text-[18px] capitalize font-bold">
                     total
