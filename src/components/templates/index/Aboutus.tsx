@@ -82,7 +82,7 @@ function Aboutus() {
               </Link>
             </div>
 
-            <ul className="tabs mt-24 bg-[#f5f5f5] p-14 w-full xl:-translate-x-0 2xl:-translate-x-16 flex lg:grid grid-cols-2 md:gap-y-12 xl:flex items-center gap-x-12 lg:gap-x-4 justify-between">
+            <ul className="tabs mt-24 bg-[#f5f5f5] p-14 w-full xl:-translate-x-0 2xl:-translate-x-16 gap-y-16 flex flex-col sm:flex-row lg:grid grid-cols-2 md:gap-y-12 xl:flex items-center gap-x-12 lg:gap-x-4 justify-between">
               {tabs.map((tab) => (
                 <li
                   key={tab.id}

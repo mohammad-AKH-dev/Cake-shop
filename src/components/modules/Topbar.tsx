@@ -172,7 +172,7 @@ function Topbar() {
           {isShowBasket && (
             <div
               className="items-cart bg-white w-[300px] sm:w-[400px] p-4 tracking-wider h-[300px] 
-          drop-shadow-xl top-10 absolute overflow-y-auto  overflow-x-hidden -right-[5rem] sm:right-0 rounded-sm border-b border-b-[#e1e1e1]"
+          drop-shadow-xl top-10 absolute overflow-y-auto  overflow-x-hidden -right-[4.8rem] sm:right-0 rounded-sm border-b border-b-[#e1e1e1]"
             >
               <div className="basket__header uppercase font-bold">
                 <span className="text-[18px]">in cart:</span>
