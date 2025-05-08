@@ -19,7 +19,7 @@ function PageHeader(props: PageHeaderPropsType) {
   return (
     <>
       <div
-        className="page-header bg-page-header relative z-[999] flex bg-cover lg:mt-4
+        className="page-header bg-page-header relative z-[999] flex bg-cover lg:mt-4 text-title
     bg-center items-center justify-center h-[381px]"
       >
         <h3
@@ -29,7 +29,7 @@ function PageHeader(props: PageHeaderPropsType) {
           {title}
         </h3>
       </div>
-      <div className="breadcrumb flex items-center justify-center p-4 bg-new-products gap-x-4 text-text hover:text-title transition-all">
+      <div className="breadcrumb flex items-center justify-center p-4 bg-new-products  gap-x-4 text-text hover:text-title transition-all">
         <div className="flex items-center gap-x-3">
           <Link
             href={`/`}

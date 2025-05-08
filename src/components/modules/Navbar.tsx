@@ -50,6 +50,7 @@ function Navbar() {
     setTotalPrice(totalPriceItems!);
   }, [basketItems?.basket]);
 
+
   const plusItemCount = (id: number) => {
     const mainItem = basketItems?.basket.find((item) => item.id === id);
     basketItems?.setBasket((prevState) =>
