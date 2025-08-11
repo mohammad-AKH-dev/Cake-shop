@@ -21,7 +21,7 @@ function Landing() {
         <p className="text-text tracking-widest text-[18px] lg:text-[24px] mt-8 max-w-[30rem]">
           Sweet Bakery offers the best cakes and sweets for you.
         </p>
-        <Button title="shop now" href="/shop"/>
+        <Button title="shop now" href="/shop/1"/>
       </div>
     </section>
   );

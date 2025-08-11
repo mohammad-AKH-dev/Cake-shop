@@ -63,6 +63,16 @@ module.exports = {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
+  			},
+  			sidebar: {
+  				DEFAULT: 'hsl(var(--sidebar-background))',
+  				foreground: 'hsl(var(--sidebar-foreground))',
+  				primary: 'hsl(var(--sidebar-primary))',
+  				'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+  				accent: 'hsl(var(--sidebar-accent))',
+  				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+  				border: 'hsl(var(--sidebar-border))',
+  				ring: 'hsl(var(--sidebar-ring))'
   			}
   		},
   		borderColor: {
@@ -81,12 +91,14 @@ module.exports = {
   			'product-box': '0 1px 18px 0 rgba(0, 0, 0, 0.09)',
   			'row-box': '0 0 9px 0 rgba(0, 0, 0, 0.08)',
   			'service-box': '3px 6px 6px 0 rgba(0, 0, 0, 0.11)',
-			'testimonial-box': '0 0 18px 0 rgba(0, 0, 0, 0.13)',
-			'top-comment': '0 0 16px 0 rgba(0, 0, 0, 0.09)',
-			'single-product': '0 0 6px 0 rgba(0, 0, 0, 0.21)',
-			'author': '0 3px 18px 0 rgba(0, 0, 0, 0.15)'
-			
+  			'testimonial-box': '0 0 18px 0 rgba(0, 0, 0, 0.13)',
+  			'top-comment': '0 0 16px 0 rgba(0, 0, 0, 0.09)',
+  			'single-product': '0 0 6px 0 rgba(0, 0, 0, 0.21)',
+  			author: '0 3px 18px 0 rgba(0, 0, 0, 0.15)',
   		},
+	     dropShadow: {
+			'cart': 'drop-shadow(0 0 3px rgba(1, 3, 4, 0.19))',
+		 },
   		backgroundColor: {
   			primary: '#c14679',
   			hover: '#8c2f55',

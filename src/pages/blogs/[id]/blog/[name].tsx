@@ -3,7 +3,7 @@ import LatestPost from "@/components/modules/blog/LatestPost";
 import BlogBox from "@/components/modules/blogs/BlogBox";
 import ContactInput from "@/components/modules/contact/ContactInput";
 import PageHeader from "@/components/modules/PageHeader";
-import CategoryInput from "@/components/modules/shop/CategoryInput";
+import { GetStaticPropsContext } from "next";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
@@ -19,7 +19,19 @@ type IFormInput = {
   message: string;
 };
 
-function SingleBlogPage() {
+type blogBoxType = {
+  id: number;
+  title: string;
+  path: string;
+  desc: string;
+};
+
+type singleBlogPagePropsType = {
+  blog: blogBoxType
+}
+
+function SingleBlogPage({blog}: singleBlogPagePropsType) {
+  const { title , path , desc} = blog
   const {
     register,
     handleSubmit,
@@ -48,7 +60,7 @@ function SingleBlogPage() {
   const router = useRouter();
   return (
     <div className="single-blog__Page relative z-[999]">
-      <PageHeader title="blog post" paths={["blog", `${router.query.name}`]} />
+      <PageHeader title="blog post" paths={["blogs", `${router.query.name}`]}/>
       <div className="container single-blog__content mt-24 flex flex-col lg:flex-row gap-x-16 xl:gap-x-4">
         <div className="single-blog__left-section w-full lg:w-[70%] xl:w-[75%]">
           <div className="single-blog__date flex items-center gap-x-4">
@@ -62,11 +74,11 @@ function SingleBlogPage() {
             className="single-blog__title text-[28px] md:text-[36px] lg:text-[30px] xl:text-[36px] mb-8 font-bold max-w-[80%] leading-[3rem] 
           mt-4 tracking-widest"
           >
-            How to Pipe a Fluffy Frosting Border on a Cake
+            {title}
           </h1>
           <div className="single-blog__img-wrapper max-w-[780px] h-[385px] overflow-hidden">
             <Image
-              src={"/images/blogs/blog-1.jpg"}
+              src={path}
               width={781}
               height={385}
               alt="single-blog__img"
@@ -90,8 +102,7 @@ function SingleBlogPage() {
               integer malesuada nunc. Etiam sit amet nisl purus in mollis.
             </p>
             <h2 className="font-bold text-title text-[20px] md:text-[24px] leading-10 tracking-wider">
-              Ornare aenean euismod elementum nisi. Ut placerat orci nulla
-              pellentesque dignissim enim.
+              {desc}
             </h2>
             <p>
               Aliquam faucibus purus in massa tempor nec feugiat. Feugiat in
@@ -124,8 +135,8 @@ function SingleBlogPage() {
             <h4 className="related-posts__title uppercase tracking-widest 
           text-title text-[16px] mt-10 font-bold mb-10">related posts</h4>
             <div className="related-posts__boxes grid grid-cols-1 gap-y-6 sm:grid-cols-2 gap-x-10">
-              <BlogBox />
-              <BlogBox />
+              <BlogBox {...blog} key={blog.id}/>
+              <BlogBox {...blog} key={blog.id}/>
             </div>
           </div>
           <div className="comments-section max-w-[800px] mt-24">
@@ -282,6 +293,31 @@ function SingleBlogPage() {
       </div>
     </div>
   );
+}
+
+export async function getStaticPaths () {
+  const res = await fetch('https://cake-shop-api-yhrn.onrender.com/api/blogs')
+  const blogs = await res.json()
+  
+  const paths = blogs.map((blog:blogBoxType) => ({
+    params: { id: blog.id.toString() , name: blog.title },
+  }))
+
+  return {
+    paths,fallback: false
+  }
+}
+
+export async function getStaticProps (context: GetStaticPropsContext) {
+  const {params} = context
+  const res = await fetch(`https://cake-shop-api-yhrn.onrender.com/api/blogs/${params?.id}`)
+  const blog = await res.json()
+
+  return {
+    props: {
+      blog
+    }
+  }
 }
 
 export default SingleBlogPage;

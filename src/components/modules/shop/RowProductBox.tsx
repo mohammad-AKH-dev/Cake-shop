@@ -10,10 +10,11 @@ type productBoxType = {
   score: number;
   category: "cakes" | "puddings" | "Sweets";
   sources: string[];
+  onAdd: () => void
 };
 
 function RowProductBox(props: productBoxType) {
-  const { title, price, discount, sources } = props;
+  const { title, price, discount, sources , onAdd} = props;
   return (
     <div className="row-products__box max-w-[300px] mx-auto sm:max-w-fit flex flex-col sm:flex-row items-center gap-x-12 shadow-row-box">
       <div className="img-wrapper min-w-[250px] md:min-w-fit h-[300px] md:h-full md:w-[70%] xl:h-[330px] relative flex items-center justify-center bg-new-products">
@@ -54,7 +55,7 @@ function RowProductBox(props: productBoxType) {
           Tellus at urna condimentum mattis pellentesque id nibh tortor rutrum
           tellus pellentesque eu tincidunt.
         </p>
-        <button
+        <button onClick={onAdd}
           className="add-to-basket__btn outline-none border-none transition-all bg-primary
         text-[14px] text-white font-bold mx-auto sm:ml-0 sm:mr-0 uppercase py-2 md:py-4 px-9 rounded-lg tracking-widest mt-8 hover:bg-hover flex items-center justify-center"
         >

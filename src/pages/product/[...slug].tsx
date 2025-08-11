@@ -47,11 +47,6 @@ type singleProductPropsType = {
 function SingleProduct({ product }: singleProductPropsType) {
   const router = useRouter();
   const { sources, title, price, category, score, discount } = product;
-  const [images, setImages] = useState([
-    "/images/products/single-product-1.png",
-    "/images/products/single-product-2.png",
-    "/images/products/single-product-3.png",
-  ]);
   const [activeImage, setActiveImage] = useState(0);
   const swiperRef = useRef<SwiperClass>(null);
   const {slug} = router.query

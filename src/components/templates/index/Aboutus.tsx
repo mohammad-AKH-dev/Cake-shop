@@ -65,12 +65,12 @@ function Aboutus() {
           >
             <div className="bg-white ">
               <h5
-                className="right-section__title uppercase bg-[#fff]  text-title tracking-widest transition-all text-[24px] mx-auto max-w-[400px] font-bold
+                className="right-section__title uppercase bg-[#fff]  text-title tracking-widest transition-all text-[24px] mx-auto max-w-[250px] sm:max-w-[400px] font-bold
               hover:text-primary"
               >
                 {selectedTab.title}
               </h5>
-              <p className="right-section__paragraph text-title mt-6 leading-6 text-[15px] bg-[#fff] mx-auto max-w-[450px]">
+              <p className="right-section__paragraph text-title mt-6 leading-6 text-[15px] bg-[#fff] mx-auto max-w-[250px] sm:max-w-[450px]">
                 {selectedTab.desc}
               </p>
               <Link
@@ -82,7 +82,7 @@ function Aboutus() {
               </Link>
             </div>
 
-            <ul className="tabs mt-24 bg-[#f5f5f5] p-14 w-full xl:-translate-x-0 2xl:-translate-x-16 flex lg:grid grid-cols-2 md:gap-y-12 xl:flex items-center gap-x-12 lg:gap-x-4 justify-between">
+            <ul className="tabs mt-24 bg-[#f5f5f5] p-14 w-full xl:-translate-x-0 2xl:-translate-x-16 gap-y-16 flex flex-col sm:flex-row lg:grid grid-cols-2 md:gap-y-12 xl:flex items-center gap-x-12 lg:gap-x-4 justify-between">
               {tabs.map((tab) => (
                 <li
                   key={tab.id}

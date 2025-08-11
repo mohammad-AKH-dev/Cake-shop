@@ -53,7 +53,7 @@ function Testimonials() {
     <section className="testimonials-section mt-24">
       <SectionTitle title="testimonials" />
 
-      <div className="swiper-wrapper container xl:max-w-[1200px]">
+      <div className="swiper-wrapper container max-w-[320px] md:w-full xl:max-w-[1200px]">
         <Swiper
           pagination={true}
           modules={[Pagination,Autoplay]}

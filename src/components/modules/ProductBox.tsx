@@ -12,15 +12,15 @@ type productBoxType = {
   score: number;
   category: "cakes" | "puddings" | "Sweets";
   sources: string[];
+  add: () => void
 };
 
 function ProductBox(props: productBoxType) {
-  const {id , title, discount, price , sources} = props;
+  const {id , title, discount, price , sources , add} = props;
 
   return (
     <>
-      <Link
-        href={`/product/${title}/${id}`}
+      <div
         className="product-box shadow-product-box flex items-center justify-center flex-col gap-y-4 py-8 transition-all
      delay-100 hover:translate-y-7 group  "
       >
@@ -56,24 +56,26 @@ function ProductBox(props: productBoxType) {
           className="product-more-infos__wrapper pt-4 transition-all
         cursor-pointer delay-75 items-center justify-center gap-x-4 flex"
         >
-          <div
+          <Link
+           href={`/product/${title}/${id}`}
             className="more-details w-11 h-11 rounded-full scale-0 delay-75 group-hover:scale-100  
            cursor-pointer
            flex items-center justify-center  bg-[#c14679] hover:bg-title group transition-all
            "
           >
             <IoSearchOutline className="text-white transition-all text-[20px] group-hover:text-white" />
-          </div>
+          </Link>
           <div
+           onClick={() => add()}
             className="shopping-icon w-11 h-11 rounded-full scale-0 delay-150 group-hover:scale-100  
            cursor-pointer
            flex items-center justify-center  bg-[#c14679] hover:bg-title group transition-all
            "
           >
-            <FaCartShopping className="text-white transition-all text-[20px] group-hover:text-white" />
+            <FaCartShopping className="text-white transition-all text-[20px] group-hover:text-white"/>
           </div>
         </div>
-      </Link>
+      </div>
     </>
   );
 }
