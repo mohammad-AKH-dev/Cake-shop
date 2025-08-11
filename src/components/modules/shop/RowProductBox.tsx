@@ -28,7 +28,7 @@ function RowProductBox(props: productBoxType) {
           alt="product-img"
         />
       </div>
-      <div className="product-content">
+      <div className="product-content text-center sm:text-start">
         <h4 className="product-content__title text-[18px] md:text-[24px] tracking-widest font-bold mb-2">
           {title}
         </h4>
@@ -50,7 +50,7 @@ function RowProductBox(props: productBoxType) {
             </>
           )}
         </div>
-        <p className="product-content__desc mt-4 text-text text-[13px] md:text-[15px]">
+        <p className="product-content__desc mt-4 text text-[13px] md:text-[15px]">
           Tellus at urna condimentum mattis pellentesque id nibh tortor rutrum
           tellus pellentesque eu tincidunt.
         </p>

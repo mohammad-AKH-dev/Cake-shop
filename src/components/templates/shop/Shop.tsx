@@ -279,7 +279,7 @@ function Shop(props: shopComponentPropsType) {
               {!isMatchedProducts ? (
                 <div
                   className="searched-products text-center leading-6 tracking-widest
-              left-0 right-0 p-12 absolute top-[3rem] flex flex-col gap-y-4 bg-new-products"
+              left-0 right-0 p-6 lg:p-10 xl:p-12 absolute top-[3rem] flex flex-col gap-y-4 bg-new-products"
                 >
                   <span className="font-bold">
                     can't find any product with "{searchedProduct}" title
@@ -290,7 +290,7 @@ function Shop(props: shopComponentPropsType) {
               {isEmpty && (
                 <div
                   className="searched-products text-center leading-6 tracking-widest
-                 left-0 right-0 p-12 absolute top-[3rem] flex flex-col gap-y-4 bg-new-products"
+                 left-0 right-0 p-6 lg:p-10 xl:p-12 absolute top-[3rem] flex flex-col gap-y-4 bg-new-products"
                 >
                   <span className="font-bold">
                     please write something suitable and don't leave input empty!
